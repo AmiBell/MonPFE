@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="49dp"
+        android:text="ChercherCovoiturage"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/editText9"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="pt_dep"
+
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/editText10"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/editText9"
+        android:layout_alignRight="@+id/editText9"
+        android:layout_below="@+id/editText9"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:hint="pt_arv"
+
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/editText11"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/editText10"
+        android:layout_alignRight="@+id/editText10"
+        android:layout_below="@+id/editText10"
+        android:layout_marginTop="29dp"
+        android:ems="10"
+        android:hint="date"
+
+        android:inputType="date" />
+
+    <EditText
+        android:id="@+id/editText12"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText11"
+        android:layout_alignStart="@+id/editText11"
+        android:layout_below="@+id/editText11"
+        android:layout_marginTop="23dp"
+        android:ems="10"
+        android:hint="1"
+        android:inputType="numberSigned" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button4"
+        android:layout_alignLeft="@+id/editText12"
+        android:layout_alignStart="@+id/editText12"
+        android:layout_marginBottom="44dp"
+        android:background="@color/Myblue"
+        android:text="Chercher"
+        android:contentDescription="@string/chercher"
+        android:textAlignment="center"
+        android:textColor="?android:attr/colorBackground"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button3"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/button3"
+        android:layout_marginBottom="15dp"
+        android:background="@color/bleu"
+        android:text="Annuler"
+        android:contentDescription="@string/annuler"
+        android:textAlignment="center"
+        android:textColor="?android:attr/colorBackground"
+        android:textStyle="bold" />
+
+</RelativeLayout>

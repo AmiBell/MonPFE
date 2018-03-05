@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryBlue">#303F9F</color>
+    <color name="colorAccent">#ff4056</color>
+    <color name="colorPrimaryBrown">#795548</color>
+    <color name="colorPrimaryDark">#5D4037</color>
+    <color name="white">#ffffff</color>
+    <color name="darkgray">#6C6C6C</color>
+    <color name="gris">#9fa2b6</color>
+    <color name="bleu">#ff0e2a</color>
+    <color name="roseback">#99696d</color>
+    <color name="vert">#1eb496</color>
+    <color name="darkBlueGray">#253242</color>
+    <color name="rose">#a19288</color>
+    <color name="DarkBlueGray">#8c8d8f</color>
+    <color name="roseBackground">#99696d</color>
+    <color name="roseChamp">#a19288</color>
+    <color name="MyRose">#f18986</color>
+    <color name="Myblue">#7ef3c3a9</color>
+    <color name="Vert">#d7efd7</color>
+    <color name="orange">#f1a369</color>
+    <color name="bluetp">#fa5519</color>
+    <color name="buee">#2a80c5</color>
+    <color name="griis">#c0c7bf</color>
+    <color name="jaune">#e4e0da</color>
+    <color name="mauve">#c035c9</color>
+    <color name="buep">#FF2434AE</color>
+</resources>

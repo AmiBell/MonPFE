@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">MyProject</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="Contacte">Contactez_nous</string>
+    <string name="action_settings">Settings</string>
+    <string name="android_studio">Android Studio</string>
+    <string name="title_activity_contactez_nous">Contactez_nous</string>
+    <string name="envoyer">envoyer</string>
+    <string name="message">message</string>
+    <string name="sujet">sujet</string>
+    <string name="title_activity_chercher_covoiturage">ChercherCovoiturage</string>
+    <string name="annuler">annuler</string>
+    <string name="chercher">chercher</string>
+    <string name="date">date</string>
+    <string name="pt_arv">pt_arv</string>
+    <string name="pt_dep">pt_dep</string>
+    <string name="ChercherCovoiturage">Chercher Covoiturage</string>
+    <string name="Cherchercovoiturage">ChercherCovoiturage</string>
+
+</resources>

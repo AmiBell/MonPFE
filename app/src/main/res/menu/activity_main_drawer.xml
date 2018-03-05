@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="PROFIL">
+        <menu>
+            <item android:id="@+id/infperso" android:title="Informations personnelles" />
+            <item android:id="@+id/voirprofilpublic" android:title="Voir profil public" />
+            <item  android:id="@+id/modifierinfoperso" android:title="Modifier info personelles" />
+            <item  android:id="@+id/prefrences" android:title="Preferences" />
+            <item  android:id="@+id/vehicule" android:title="Véhicule" />
+        </menu>
+    </item>
+    <item android:title="AVIS">
+        <menu>
+            <item android:id="@+id/avisrec" android:title="Avis reçus" />
+        </menu>
+    </item>
+    <item android:title="TRAJETS">
+        <menu>
+            <item android:id="@+id/cherchercovoiturage" android:title="Chercher Covoiturage"/>
+            <item android:id="@+id/proposercovoiturage" android:title="Proposer Covoiturage"/>
+            <item android:id="@+id/avenir" android:title="Mes trajets à venir" />
+            <item android:id="@+id/res" android:title="Mes reservation"/>
+            <item android:id="@+id/map" android:title="MAP" />
+        </menu>
+    </item>
+    <item android:title="PARAMETRES">
+        <menu>
+            <item android:id="@+id/paramatres" android:title="Pramaètres de notifications" />
+            <item  android:id="@+id/contactez" android:title="Contactez_nous" />
+            <item  android:id="@+id/langue" android:title="Langue" />
+            <item android:id="@+id/deconnexion" android:title="Déconnexion" />
+
+        </menu>
+    </item>
+
+</menu>
