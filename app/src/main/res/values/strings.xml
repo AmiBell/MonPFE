@@ -60,5 +60,8 @@
     <string name="confirmMDP">confirmMDP</string>
     <string name="chooseNewMDP">chooseNewMDP</string>
     <string name="mdpOublie">mdpOublie</string>
+    <string name="imageLogo">imagelogo</string>
+    <string name="connect">connect</string>
+    <string name="souvenir">souvenir</string>
 
 </resources>
