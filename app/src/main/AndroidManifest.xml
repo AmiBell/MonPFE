@@ -26,6 +26,34 @@
         <activity
             android:name=".ChercherCovoiturage"
             android:label="@string/title_activity_chercher_covoiturage"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ProposerCovoiturage"
+            android:label="@string/title_activity_proposer_covoiturage"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Vehicue"
+            android:label="@string/title_activity_vehicue"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Vehicule"
+            android:label="@string/title_activity_vehicule"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Preference"
+            android:label="@string/title_activity_preference"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".InfoPerso"
+            android:label="@string/title_activity_info_perso"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MesTrajetsAvenir"
+            android:label="@string/title_activity_mes_trajets_avenir"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MesReservations"
+            android:label="@string/title_activity_mes_reservations"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

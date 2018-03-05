@@ -73,18 +73,21 @@ public class ChercherCovoiturage extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
         if (id == R.id.vehicule) {
-
+            Intent intent = new Intent(this,Vehicule.class);
+            startActivity(intent);
 
         } else if (id == R.id.modifierinfoperso) {
+            Intent intent = new Intent(this,Preference.class);
+            startActivity(intent);
 
 
         } else if (id == R.id.cherchercovoiturage) {
-
+            Intent intent = new Intent(this,ChercherCovoiturage.class);
+            startActivity(intent);
 
         } else if (id == R.id.proposercovoiturage) {
-            Intent intent = new Intent(this,ChercherCovoiturage.class);
+            Intent intent = new Intent(this,ProposerCovoiturage.class);
             startActivity(intent);
 
         } else if (id == R.id.contactez) {
@@ -93,11 +96,17 @@ public class ChercherCovoiturage extends AppCompatActivity
 
 
         } else if (id == R.id.prefrences) {
+            Intent intent = new Intent(this,Preference.class);
+            startActivity(intent);
 
 
         }else if (id==R.id.avenir){
+            Intent intent = new Intent(this,MesTrajetsAvenir.class);
+            startActivity(intent);
 
         }else if (id==R.id.res){
+            Intent intent = new Intent(this,MesReservations.class);
+            startActivity(intent);
 
         }
 
