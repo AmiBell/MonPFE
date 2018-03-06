@@ -82,7 +82,7 @@ public class Contactez_nous extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.modifierinfoperso) {
-            Intent intent = new Intent(this,Preference.class);
+            Intent intent = new Intent(this,InfoPerso.class);
             startActivity(intent);
 
 
@@ -112,8 +112,11 @@ public class Contactez_nous extends AppCompatActivity
             Intent intent = new Intent(this,MesReservations.class);
             startActivity(intent);
 
-        }
+        }else if (id==R.id.map){
+            Intent intent = new Intent(this,MyLocalisation.class);
+            startActivity(intent);
 
+        }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

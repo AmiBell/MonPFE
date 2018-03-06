@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@color/white">
+    >
 
     <!-- Login progress -->
     <ProgressBar
@@ -74,6 +74,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/souvenir"
+                android:onClick="Select"
                 android:textColor="@android:color/black" />
 
             <TextView
@@ -94,14 +95,15 @@
                 android:background="@color/buee"
                 android:text="@string/connect"
                 android:textStyle="bold" />
+
             <Button
                 android:id="@+id/email_subscribe_button"
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:background="@color/bleu"
                 android:text="@string/action_subscribe_short"
-                android:background="@color/colorAccent"
                 android:textStyle="bold" />
 
         </LinearLayout>

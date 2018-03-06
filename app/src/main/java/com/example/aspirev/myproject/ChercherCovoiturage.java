@@ -21,6 +21,7 @@ public class ChercherCovoiturage extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chercher_covoiturage);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -78,7 +79,7 @@ public class ChercherCovoiturage extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.modifierinfoperso) {
-            Intent intent = new Intent(this,Preference.class);
+            Intent intent = new Intent(this,InfoPerso.class);
             startActivity(intent);
 
 
@@ -106,6 +107,10 @@ public class ChercherCovoiturage extends AppCompatActivity
 
         }else if (id==R.id.res){
             Intent intent = new Intent(this,MesReservations.class);
+            startActivity(intent);
+
+        }else if (id==R.id.map){
+            Intent intent = new Intent(this,MyLocalisation.class);
             startActivity(intent);
 
         }

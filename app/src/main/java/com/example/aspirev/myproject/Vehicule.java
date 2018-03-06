@@ -74,13 +74,12 @@ public class Vehicule extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
         if (id == R.id.vehicule) {
             Intent intent = new Intent(this,Vehicule.class);
             startActivity(intent);
 
         } else if (id == R.id.modifierinfoperso) {
-            Intent intent = new Intent(this,Preference.class);
+            Intent intent = new Intent(this,InfoPerso.class);
             startActivity(intent);
 
 
@@ -110,8 +109,11 @@ public class Vehicule extends AppCompatActivity
             Intent intent = new Intent(this,MesReservations.class);
             startActivity(intent);
 
-        }
+        }else if (id==R.id.map){
+            Intent intent = new Intent(this,MyLocalisation.class);
+            startActivity(intent);
 
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

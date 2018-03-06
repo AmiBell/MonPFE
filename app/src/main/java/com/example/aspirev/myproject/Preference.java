@@ -79,7 +79,7 @@ public class Preference extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.modifierinfoperso) {
-            Intent intent = new Intent(this,Preference.class);
+            Intent intent = new Intent(this,InfoPerso.class);
             startActivity(intent);
 
 
@@ -107,6 +107,10 @@ public class Preference extends AppCompatActivity
 
         }else if (id==R.id.res){
             Intent intent = new Intent(this,MesReservations.class);
+            startActivity(intent);
+
+        }else if (id==R.id.map){
+            Intent intent = new Intent(this,MyLocalisation.class);
             startActivity(intent);
 
         }

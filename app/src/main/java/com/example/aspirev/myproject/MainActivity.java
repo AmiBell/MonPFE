@@ -22,18 +22,22 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     private static final String TAG = "MainActivity";
     private static  final int ERROR_DIALOG_REQUEST = 9001 ;
 
 
-    DataBaseHelper myDb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        Button btnConnection = (Button)findViewById(R.id.id_chercher) ;
+        Button btnInscription= (Button)findViewById(R.id.id_proposer);
+        btnConnection.setOnClickListener(this);
+        btnInscription.setOnClickListener(this);
         if(isServiceOk()){
             init();
         }
@@ -48,7 +52,31 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
-        myDb = new DataBaseHelper(this);
+
+    }
+    private void goToNextActivity(){
+        Intent intent = new Intent(this,ChercherCovoiturage.class);
+        startActivity(intent);
+    }
+
+    private void goToNextActivity2(){
+        Intent intent = new Intent(this,ProposerCovoiturage.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.id_chercher:
+                goToNextActivity();
+                break;
+            case R.id.id_proposer:
+                goToNextActivity2();
+                break;
+            default:
+                break;
+
+        }
     }
 
     @Override
@@ -94,7 +122,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.modifierinfoperso) {
-            Intent intent = new Intent(this,Preference.class);
+            Intent intent = new Intent(this,InfoPerso.class);
             startActivity(intent);
 
 
@@ -122,6 +150,10 @@ public class MainActivity extends AppCompatActivity
 
         }else if (id==R.id.res){
             Intent intent = new Intent(this,MesReservations.class);
+            startActivity(intent);
+
+        }else if (id==R.id.map){
+            Intent intent = new Intent(this,MyLocalisation.class);
             startActivity(intent);
 
         }

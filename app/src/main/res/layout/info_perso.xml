@@ -4,9 +4,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="40dp"
-    android:paddingRight="40dp"
-    android:background="@color/white">
+    android:padding="51dp"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,15 +13,7 @@
         android:orientation="vertical"
         android:focusable="true">
 
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:text="@string/TinfoPerso"
-            android:textAlignment="center"
-            android:textColor="@android:color/black"
-            android:textSize="20sp"
-            android:layout_weight="0.30" />
+
 
         <EditText
             android:id="@+id/editText25"
@@ -68,6 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/notAfficheTel"
+            android:onClick="select"
             android:paddingTop="20dp"/>
 
         <Spinner
@@ -80,9 +72,12 @@
             android:id="@+id/textView9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/MyRose"
             android:paddingTop="20dp"
             android:text="@string/changeMDP"
             android:textAlignment="center"
+            android:textColor="@color/bleu"
+            android:textColorLink="@color/common_google_signin_btn_text_dark_default"
             android:textSize="20sp"
             android:textStyle="bold" />
 

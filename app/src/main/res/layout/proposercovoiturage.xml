@@ -4,9 +4,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="40dp"
-    android:paddingRight="40dp"
-    android:background="@color/white">
+    android:padding="51dp"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,16 +13,7 @@
         android:orientation="vertical"
         android:focusable="true">
 
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/proposer"
-            android:textColor="@android:color/black"
-            android:textSize="25sp"
-            android:textAlignment="center"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp"/>
+
 
         <EditText
             android:id="@+id/editText5"
@@ -78,22 +68,33 @@
             android:inputType="number"
             android:layout_marginBottom="20dp"/>
 
-        <RadioButton
-            android:id="@+id/radioButton5"
+        <RadioGroup
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/entreF"
-            android:textColor="@color/MyRose"
-            android:textSize="16sp"/>
+            android:layout_height="match_parent"
+            android:onClick="SelectChoix"
 
-        <RadioButton
-            android:id="@+id/radioButton6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/entreH"
-            android:textColor="@color/buee"
-            android:textSize="16sp"
-            android:layout_marginBottom="20dp"/>
+
+            >
+
+            <RadioButton
+                android:id="@+id/radioButton6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_weight="1"
+                android:text="@string/entreH"
+                android:textColor="@color/buee"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/radioButton5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/entreF"
+                android:textColor="@color/MyRose"
+                android:textSize="16sp" />
+        </RadioGroup>
 
         <EditText
             android:id="@+id/editText33"
