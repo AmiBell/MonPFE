@@ -21,11 +21,11 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="205dp"
-        android:layout_height="146dp"
-        android:background="@drawable/slkni"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
         android:layout_marginTop="15dp"
-        android:contentDescription="@string/imageLogo"/>
+        android:background="@drawable/slkni"
+        android:contentDescription="@string/imageLogo" />
     <ScrollView
 
         android:id="@+id/login_form"

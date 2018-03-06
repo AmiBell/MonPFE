@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:focusable="true">
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="49dp"
-        android:text="ChercherCovoiturage"
+
+        android:text="@string/cherchCo"
         android:textAlignment="center"
         android:textSize="30sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:id="@+id/editText9"
@@ -23,8 +24,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
         android:ems="10"
-        android:hint="pt_dep"
-
+        android:hint="@string/pt_dep"
+        android:drawableEnd="@drawable/dep"
+        android:drawableRight="@drawable/dep"
         android:inputType="textPersonName" />
 
     <EditText
@@ -36,8 +38,9 @@
         android:layout_below="@+id/editText9"
         android:layout_marginTop="28dp"
         android:ems="10"
-        android:hint="pt_arv"
-
+        android:hint="@string/pt_arv"
+        android:drawableRight="@drawable/arv"
+        android:drawableEnd="@drawable/arv"
         android:inputType="textPersonName" />
 
     <EditText
@@ -49,8 +52,9 @@
         android:layout_below="@+id/editText10"
         android:layout_marginTop="29dp"
         android:ems="10"
-        android:hint="date"
-
+        android:hint="@string/date"
+        android:drawableRight="@drawable/date"
+        android:drawableEnd="@drawable/date"
         android:inputType="date" />
 
     <EditText
@@ -74,7 +78,7 @@
         android:layout_alignStart="@+id/editText12"
         android:layout_marginBottom="44dp"
         android:background="@color/Myblue"
-        android:text="Chercher"
+        android:text="@string/chercher"
         android:contentDescription="@string/chercher"
         android:textAlignment="center"
         android:textColor="?android:attr/colorBackground"
@@ -89,7 +93,7 @@
         android:layout_alignStart="@+id/button3"
         android:layout_marginBottom="15dp"
         android:background="@color/bleu"
-        android:text="Annuler"
+        android:text="@string/annuler"
         android:contentDescription="@string/annuler"
         android:textAlignment="center"
         android:textColor="?android:attr/colorBackground"
