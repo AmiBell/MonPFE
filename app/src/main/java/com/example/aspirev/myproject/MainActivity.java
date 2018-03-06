@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity
     private static  final int ERROR_DIALOG_REQUEST = 9001 ;
 
 
-    DataBaseHelper myDb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        myDb = new DataBaseHelper(this);
+
     }
 
     @Override

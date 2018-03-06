@@ -1,7 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,7 +19,7 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="27dp"
-            android:text="TVehicule"
+            android:text="@string/TVehicule"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="20sp" />
@@ -30,7 +33,7 @@
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:contentDescription="photoV"
+                android:contentDescription="@string/photoV"
                 android:layout_marginTop="12dp" />
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -72,7 +75,7 @@
                     android:layout_height="10dp"
                     android:layout_weight="0.04"
                     android:background="@android:drawable/ic_delete"
-                    android:contentDescription="supprimeV"/>
+                    android:contentDescription="@string/supprimeV"/>
 
                 <ImageButton
                     android:id="@+id/buttond"
@@ -81,7 +84,7 @@
                     android:layout_height="10dp"
                     android:layout_weight="0.04"
                     android:background="@android:drawable/ic_menu_edit"
-                    android:contentDescription="modifV"/>
+                    android:contentDescription="@string/modifV"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -93,7 +96,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="44dp"
             android:ems="10"
-            android:hint="immat"
+            android:hint="@string/immat"
             android:inputType="number" />
 
         <EditText
@@ -102,7 +105,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="19dp"
             android:ems="10"
-            android:hint="marque"
+            android:hint="@string/marque"
             android:inputType="textPersonName"
             android:textColor="@color/gris" />
 
@@ -112,7 +115,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:ems="10"
-            android:hint="modele"
+            android:hint="@string/modele"
             android:inputType="textPersonName"
             android:textColor="@color/gris" />
 
@@ -122,7 +125,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:ems="10"
-            android:hint="couleur"
+            android:hint="@string/couleur"
             android:inputType="textPersonName"
             android:textColor="@color/gris" />
 
@@ -130,7 +133,7 @@
             android:id="@+id/textView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="addPhoto"
+            android:text="@string/addPhoto"
             android:textColor="@android:color/black"
             android:layout_marginTop="12dp" />
 
@@ -139,7 +142,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="12dp"
-            android:contentDescription="addPhoto"/>
+            android:contentDescription="@string/addPhoto"/>
 
         <Button
             android:id="@+id/button6"
@@ -147,11 +150,10 @@
             android:layout_height="50dp"
             android:layout_marginBottom="15dp"
             android:background="@color/colorPrimaryBlue"
-            android:text="add"
+            android:text="@string/add"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:contentDescription="add" />
+            android:contentDescription="@string/add" />
 
     </LinearLayout>
-
-</RelativeLayout>
+</ScrollView>

@@ -39,7 +39,8 @@
         android:inputType="textPassword"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        />
+        android:drawableLeft="@drawable/visibilityoff"
+        android:drawableStart="@drawable/visibilityoff"/>
 
     <EditText
         android:id="@+id/editText2"
@@ -52,7 +53,8 @@
         android:layout_alignLeft="@+id/editText4"
         android:layout_alignStart="@+id/editText4"
         android:layout_marginTop="41dp"
-      />
+        android:drawableLeft="@drawable/visibilityoff"
+        android:drawableStart="@drawable/visibilityoff"/>
 
     <Button
         android:id="@+id/button5"
@@ -69,4 +71,3 @@
         android:textStyle="bold" />
 
 </RelativeLayout>
-

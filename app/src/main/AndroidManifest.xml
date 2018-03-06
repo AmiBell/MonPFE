@@ -64,6 +64,10 @@
             android:name=".MesReservations"
             android:label="@string/title_activity_mes_reservations"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".Inscription"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".Connection"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
     </application>
 

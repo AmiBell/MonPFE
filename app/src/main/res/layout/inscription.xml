@@ -81,7 +81,8 @@
         android:layout_marginTop="18dp"
         android:ems="10"
         android:hint="@string/mdp"
-
+        android:drawableRight="@drawable/lock"
+        android:drawableEnd="@drawable/lock"
         android:inputType="textPersonName" />
 
     <EditText
@@ -94,6 +95,8 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="@string/prompt_email"
+        android:drawableRight="@drawable/mail"
+        android:drawableEnd="@drawable/mail"
         android:inputType="textEmailAddress" />
 
     <EditText
@@ -131,7 +134,8 @@
         android:layout_marginTop="11dp"
         android:ems="10"
         android:hint="@string/confMDP"
-
+        android:drawableRight="@drawable/lock"
+        android:drawableEnd="@drawable/lock"
         android:inputType="textPersonName" />
 
     <CheckBox
