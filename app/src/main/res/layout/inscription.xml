@@ -20,7 +20,7 @@
 
 
     <EditText
-        android:id="@+id/editText14"
+        android:id="@+id/id_nom"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -34,19 +34,19 @@
         android:layout_alignParentStart="true" />
 
     <EditText
-        android:id="@+id/editText15"
+        android:id="@+id/id_prenom"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/prenom"
         android:inputType="textPersonName"
-        android:layout_below="@+id/editText14"
-        android:layout_alignLeft="@+id/editText14"
-        android:layout_alignStart="@+id/editText14"
+        android:layout_below="@+id/id_nom"
+        android:layout_alignLeft="@+id/id_nom"
+        android:layout_alignStart="@+id/id_nom"
         android:layout_marginTop="18dp" />
 
     <EditText
-        android:id="@+id/editText17"
+        android:id="@+id/id_mdp"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -54,12 +54,12 @@
         android:drawableRight="@drawable/lock"
         android:drawableEnd="@drawable/lock"
         android:inputType="textPersonName"
-        android:layout_above="@+id/editText22"
-        android:layout_alignLeft="@+id/editText20"
-        android:layout_alignStart="@+id/editText20" />
+        android:layout_above="@+id/id_mdpConf"
+        android:layout_alignLeft="@+id/id_email"
+        android:layout_alignStart="@+id/id_email" />
 
     <EditText
-        android:id="@+id/editText20"
+        android:id="@+id/id_email"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -67,29 +67,29 @@
         android:drawableRight="@drawable/mail"
         android:drawableEnd="@drawable/mail"
         android:inputType="textEmailAddress"
-        android:layout_below="@+id/editText15"
-        android:layout_alignLeft="@+id/editText15"
-        android:layout_alignStart="@+id/editText15" />
+        android:layout_below="@+id/id_prenom"
+        android:layout_alignLeft="@+id/id_prenom"
+        android:layout_alignStart="@+id/id_prenom" />
 
     <EditText
-        android:id="@+id/editText21"
+        android:id="@+id/id_annnee"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/annee"
         android:inputType="date"
         android:layout_marginBottom="16dp"
-        android:layout_above="@+id/checkBox"
-        android:layout_alignLeft="@+id/editText22"
-        android:layout_alignStart="@+id/editText22" />
+        android:layout_above="@+id/checkBox_cgu"
+        android:layout_alignLeft="@+id/id_mdpConf"
+        android:layout_alignStart="@+id/id_mdpConf" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/btn_validerInscription"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/checkBox"
+        android:layout_alignLeft="@+id/checkBox_cgu"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/checkBox"
+        android:layout_alignStart="@+id/checkBox_cgu"
         android:background="@color/buee"
         android:text="@string/valider"
         android:textAlignment="center"
@@ -97,7 +97,7 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/editText22"
+        android:id="@+id/id_mdpConf"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -105,12 +105,12 @@
         android:drawableRight="@drawable/lock"
         android:drawableEnd="@drawable/lock"
         android:inputType="textPersonName"
-        android:layout_above="@+id/editText21"
-        android:layout_alignLeft="@+id/editText17"
-        android:layout_alignStart="@+id/editText17" />
+        android:layout_above="@+id/id_annnee"
+        android:layout_alignLeft="@+id/id_mdp"
+        android:layout_alignStart="@+id/id_mdp" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/checkBox_cgu"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="@string/cgu"
@@ -120,9 +120,9 @@
         android:textStyle="italic"
         android:onClick="selectcgu"
         android:typeface="normal"
-        android:layout_above="@+id/button5"
-        android:layout_alignLeft="@+id/editText21"
-        android:layout_alignStart="@+id/editText21" />
+        android:layout_above="@+id/btn_validerInscription"
+        android:layout_alignLeft="@+id/id_annnee"
+        android:layout_alignStart="@+id/id_annnee" />
 
     <RadioGroup
         android:layout_width="wrap_content"
@@ -134,14 +134,14 @@
         android:layout_marginTop="20dp"
         android:layout_below="@+id/textView2"
         android:onClick="selecttype"
-        android:layout_alignLeft="@+id/editText14"
-        android:layout_alignStart="@+id/editText14">
+        android:layout_alignLeft="@+id/id_nom"
+        android:layout_alignStart="@+id/id_nom">
 
         <RadioButton
             android:id="@+id/radioButton4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/editText14"
+            android:layout_above="@+id/id_nom"
             android:layout_marginLeft="40dp"
             android:layout_marginStart="40dp"
             android:layout_toEndOf="@+id/radioButton3"
@@ -159,8 +159,8 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/radioButton4"
             android:layout_alignBottom="@+id/radioButton4"
-            android:layout_alignLeft="@+id/editText14"
-            android:layout_alignStart="@+id/editText14"
+            android:layout_alignLeft="@+id/id_nom"
+            android:layout_alignStart="@+id/id_nom"
             android:layout_weight="1"
             android:text="@string/h"
             android:textAlignment="center"

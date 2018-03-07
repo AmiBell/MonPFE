@@ -16,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -25,6 +26,9 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     private static final String TAG = "MainActivity";
     private static  final int ERROR_DIALOG_REQUEST = 9001 ;
+
+
+
 
 
 
@@ -53,7 +57,10 @@ public class MainActivity extends AppCompatActivity
 
 
 
+
     }
+
+
     private void goToNextActivity(){
         Intent intent = new Intent(this,ChercherCovoiturage.class);
         startActivity(intent);
