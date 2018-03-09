@@ -1,6 +1,7 @@
 package com.example.aspirev.myproject;
 
 import android.content.Intent;
+import android.icu.text.DateFormat;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,9 +14,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class Preference extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    DataBasePreference db ;
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +36,9 @@ public class Preference extends AppCompatActivity
         setContentView(R.layout.activity_preference);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        db = new DataBasePreference(this);
 
-
+        addListenerOnButton();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -120,4 +134,39 @@ public class Preference extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
+    public void addListenerOnButton() {
+        final RadioGroup music = (RadioGroup)findViewById(R.id.id_radmusic);
+        final RadioGroup cigarette = (RadioGroup)findViewById(R.id.id_radcigarette);
+        final RadioGroup discussion = (RadioGroup)findViewById(R.id.id_raddisc);
+
+        Button valide = (Button) findViewById(R.id.id_validpref);
+        valide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int m = music.getCheckedRadioButtonId();
+                int c = cigarette.getCheckedRadioButtonId();
+                int d = discussion.getCheckedRadioButtonId();
+                RadioButton rd = (RadioButton) findViewById(m);
+                RadioButton rd1 = (RadioButton) findViewById(c);
+                RadioButton rd2 = (RadioButton) findViewById(d);
+                String ms = rd.getText().toString();
+                String mr = rd1.getText().toString();
+                String mc = rd2.getText().toString();
+                boolean isInserted = db.insertpreference( ms, mr, mc);
+                    Toast.makeText(Preference.this, "Félicitation! vous etes inscrit.", Toast.LENGTH_LONG).show();
+
+
+            }
+        });
+
+    }
+
+
 }
+
+
+
+
+
