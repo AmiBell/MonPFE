@@ -56,10 +56,6 @@
             android:label="@string/title_activity_vehicule"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Preference"
-            android:label="@string/title_activity_preference"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".InfoPerso"
             android:label="@string/title_activity_info_perso"
             android:theme="@style/AppTheme.NoActionBar" />

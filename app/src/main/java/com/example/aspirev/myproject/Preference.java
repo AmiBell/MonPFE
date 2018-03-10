@@ -24,21 +24,18 @@ import android.widget.Toast;
 
 public class Preference extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    DataBasePreference db ;
+    DataBaseHelper myDb ;
 
-
-
-
-
+    RadioGroup music,cigarette,discussion;
+    Button btnValiderPreference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preference);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        db = new DataBasePreference(this);
 
-        addListenerOnButton();
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -48,7 +45,16 @@ public class Preference extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+      //  myDb = new DataBaseHelper(this);
+        music = (RadioGroup)findViewById(R.id.id_radmusic);
+        cigarette = (RadioGroup)findViewById(R.id.id_radcigarette);
+        discussion = (RadioGroup)findViewById(R.id.id_raddisc);
+        btnValiderPreference = (Button) findViewById(R.id.id_validpref);
+       // addPreference();
+
     }
+
 
     @Override
     public void onBackPressed() {
@@ -136,13 +142,9 @@ public class Preference extends AppCompatActivity
     }
 
 
-    public void addListenerOnButton() {
-        final RadioGroup music = (RadioGroup)findViewById(R.id.id_radmusic);
-        final RadioGroup cigarette = (RadioGroup)findViewById(R.id.id_radcigarette);
-        final RadioGroup discussion = (RadioGroup)findViewById(R.id.id_raddisc);
-
-        Button valide = (Button) findViewById(R.id.id_validpref);
-        valide.setOnClickListener(new View.OnClickListener() {
+  /*  public void addPreference() {
+        //Button valide = (Button) findViewById(R.id.id_validpref);
+        btnValiderPreference.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int m = music.getCheckedRadioButtonId();
@@ -153,18 +155,22 @@ public class Preference extends AppCompatActivity
                 RadioButton rd2 = (RadioButton) findViewById(d);
                 String ms = rd.getText().toString();
                 String mr = rd1.getText().toString();
+
                 String mc = rd2.getText().toString();
-                boolean isInserted = db.insertpreference( ms, mr, mc);
-                    Toast.makeText(Preference.this, "modifications validées.", Toast.LENGTH_LONG).show();
+                boolean isInserted = myDb.insertpreference( ms, mr, mc);
+                if(isInserted == true)
+                {Toast.makeText(Preference.this, "modifications validées.", Toast.LENGTH_LONG).show();}
+                else Toast.makeText(Preference.this, "Veuillez réessayer.", Toast.LENGTH_LONG).show();
 
 
             }
         });
 
-    }
+    }*/
 
 
 }
+
 
 
 
