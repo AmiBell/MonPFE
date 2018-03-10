@@ -83,7 +83,7 @@
 
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/id_immat"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="44dp"
@@ -92,7 +92,7 @@
             android:inputType="number" />
 
         <EditText
-            android:id="@+id/editText6"
+            android:id="@+id/id_marque"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="19dp"
@@ -102,7 +102,7 @@
             android:textColor="@color/gris" />
 
         <EditText
-            android:id="@+id/editText7"
+            android:id="@+id/id_modele"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
@@ -112,7 +112,7 @@
             android:textColor="@color/gris" />
 
         <EditText
-            android:id="@+id/editText8"
+            android:id="@+id/id_couleur"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
@@ -130,22 +130,22 @@
             android:layout_marginTop="12dp" />
 
         <ImageView
-            android:id="@+id/imageView5"
+            android:id="@+id/img_voiture"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="12dp"
-            android:contentDescription="@string/addPhoto"/>
+            android:contentDescription="@string/addPhoto" />
 
         <Button
-            android:id="@+id/button6"
+            android:id="@+id/id_ajouterVoiture"
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_marginBottom="15dp"
             android:background="@color/colorPrimaryBlue"
+            android:contentDescription="@string/add"
             android:text="@string/add"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:contentDescription="@string/add" />
+            android:textStyle="bold" />
 
     </LinearLayout>
 </ScrollView>

@@ -17,7 +17,7 @@ public class DataBaseVehicule extends SQLiteOpenHelper {
     private static final String COL_2="marque" ;
     private static final String COL_3="modele" ;
     private static final String COL_4="couleur";
-    private static final String COL_5="eEmail";
+   // private static final String COL_5="eEmail";
 
 
 
@@ -33,8 +33,8 @@ public class DataBaseVehicule extends SQLiteOpenHelper {
                 + COL_1 +" TEXT PRIMARY KEY, "
                 + COL_2 +" TEXT NOT NULL, "
                 + COL_3 +" TEXT NOT NULL, "
-                + COL_4 +" TEXT NOT NULL, "
-                + COL_5+"TEXT FOREIGN KEY (Email) REFRERENCES table_membre );"
+                + COL_4 +" TEXT NOT NULL); "
+               // + COL_5+"TEXT FOREIGN KEY (Email) REFRERENCES table_membre );"
                 ;
 
         db.execSQL(SQL_String);
@@ -47,14 +47,14 @@ public class DataBaseVehicule extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertVehicule(String matricule, String marque, String modele, String couleur,String email){
+    public boolean insertVehicule(String matricule, String marque, String modele, String couleur){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_1,matricule);
         contentValues.put(COL_2,marque);
         contentValues.put(COL_3,modele);
         contentValues.put(COL_4,couleur);
-        contentValues.put(COL_5,email);
+        //contentValues.put(COL_5,email);
 
         long result = db.insert(TABLE_NAME,null,contentValues);
         if(result == -1) return false;
