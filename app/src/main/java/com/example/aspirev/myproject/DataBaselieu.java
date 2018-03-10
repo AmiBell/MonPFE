@@ -12,7 +12,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DataBaselieu  extends SQLiteOpenHelper{
     private static final String DATABASE_NAME="covoiturage.db";
 
-    private static final String TABLE_NAME ="table_lieu";
+    private static final String TABLE_NAME ="table_preference";
     private static final String COL_1 ="id_preference" ;
     private static final String COL_2="music" ;
     private static final String COL_3="cigarette" ;
@@ -31,7 +31,7 @@ public class DataBaselieu  extends SQLiteOpenHelper{
                 + COL_1 +" TEXT PRIMARY KEY Autoincriment, "
                 + COL_2 +" TEXT NOT NULL, "
                 + COL_3 +" TEXT NOT NULL, "
-                + COL_4 +" TEXT NOT NULL, "
+                + COL_4 +" TEXT NOT NULL ); "
                 ;
 
         db.execSQL(SQL_String);

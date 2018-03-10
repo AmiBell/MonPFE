@@ -34,7 +34,7 @@ public class DataBaseVehicule extends SQLiteOpenHelper {
                 + COL_2 +" TEXT NOT NULL, "
                 + COL_3 +" TEXT NOT NULL, "
                 + COL_4 +" TEXT NOT NULL, "
-                + COL_5+"TEXT FOREIGN KEY (Email) REFRERENCES table_membre"
+                + COL_5+"TEXT FOREIGN KEY (Email) REFRERENCES table_membre );"
                 ;
 
         db.execSQL(SQL_String);

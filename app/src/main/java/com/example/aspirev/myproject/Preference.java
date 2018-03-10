@@ -155,7 +155,7 @@ public class Preference extends AppCompatActivity
                 String mr = rd1.getText().toString();
                 String mc = rd2.getText().toString();
                 boolean isInserted = db.insertpreference( ms, mr, mc);
-                    Toast.makeText(Preference.this, "Félicitation! vous etes inscrit.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Preference.this, "modifications validées.", Toast.LENGTH_LONG).show();
 
 
             }

@@ -52,6 +52,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL_2,nom);
         contentValues.put(COL_3,prenom);
         contentValues.put(COL_4,mdp);
+
         contentValues.put(COL_5,anneNaiss);
        long result = db.insert(TABLE_NAME,null,contentValues);
         if(result == -1) return false;

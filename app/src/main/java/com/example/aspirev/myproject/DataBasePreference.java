@@ -31,7 +31,7 @@ public class DataBasePreference extends SQLiteOpenHelper {
                 + COL_1 +" Integer PRIMARY KEY AUTO_INCREMENT, "
                 + COL_2 +" TEXT NOT NULL, "
                 + COL_3 +" TEXT NOT NULL, "
-                + COL_4 +" TEXT NOT NULL, "
+                + COL_4 +" TEXT NOT NULL ); "
                 ;
 
         db.execSQL(SQL_String);

@@ -16,7 +16,7 @@ public class DataBaseWilaya extends SQLiteOpenHelper {
     private static final String COL_1 ="lattitude" ;
     private static final String COL_2="logittude" ;
     private static final  String COL_3="codew" ;
-    private static final String COL_4="nomlieu";
+    private static final String COL_4="nomlw";
 
 
     public DataBaseWilaya(Context context) {
@@ -30,9 +30,8 @@ public class DataBaseWilaya extends SQLiteOpenHelper {
         String  SQL_String = "CREATE TABLE " + TABLE_NAME + " ( "
                 + COL_1 +" float PRIMARY KEY , "
                 + COL_2 +" float PRIMARY KEY , "
-                + COL_3 +" TEXT NOT NULL FOREIGN KEY(codew) REFERECES table_wilaya,  "
-                + COL_4 +" TEXT NOT NULL, "
-
+                + COL_3 +" TEXT NOT NULL UNIQUE,  "
+                + COL_4 +" TEXT NOT NULL );"
                 ;
 
         db.execSQL(SQL_String);
