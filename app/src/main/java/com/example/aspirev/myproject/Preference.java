@@ -24,10 +24,7 @@ import android.widget.Toast;
 
 public class Preference extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    DataBaseHelper myDb ;
 
-    RadioGroup music,cigarette,discussion;
-    Button btnValiderPreference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,12 +43,7 @@ public class Preference extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-      //  myDb = new DataBaseHelper(this);
-        music = (RadioGroup)findViewById(R.id.id_radmusic);
-        cigarette = (RadioGroup)findViewById(R.id.id_radcigarette);
-        discussion = (RadioGroup)findViewById(R.id.id_raddisc);
-        btnValiderPreference = (Button) findViewById(R.id.id_validpref);
-       // addPreference();
+
 
     }
 
@@ -140,33 +132,6 @@ public class Preference extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-
-  /*  public void addPreference() {
-        //Button valide = (Button) findViewById(R.id.id_validpref);
-        btnValiderPreference.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int m = music.getCheckedRadioButtonId();
-                int c = cigarette.getCheckedRadioButtonId();
-                int d = discussion.getCheckedRadioButtonId();
-                RadioButton rd = (RadioButton) findViewById(m);
-                RadioButton rd1 = (RadioButton) findViewById(c);
-                RadioButton rd2 = (RadioButton) findViewById(d);
-                String ms = rd.getText().toString();
-                String mr = rd1.getText().toString();
-
-                String mc = rd2.getText().toString();
-                boolean isInserted = myDb.insertpreference( ms, mr, mc);
-                if(isInserted == true)
-                {Toast.makeText(Preference.this, "modifications validées.", Toast.LENGTH_LONG).show();}
-                else Toast.makeText(Preference.this, "Veuillez réessayer.", Toast.LENGTH_LONG).show();
-
-
-            }
-        });
-
-    }*/
 
 
 }

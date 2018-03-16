@@ -18,26 +18,16 @@ import com.example.aspirev.myproject.Inscription;
 
 public class Inscription extends AppCompatActivity {
 
-    EditText editNom,editPrenom,editEmail,editAnnee,editMdp;
-    Button btnValiderInscription;
-    DataBaseHelper myDb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inscription);
-        myDb = new DataBaseHelper(this);
 
-        editNom  = (EditText) findViewById(R.id.id_nom);
-        editPrenom = (EditText)findViewById(R.id.id_prenom);
-        editEmail = (EditText)findViewById(R.id.id_email);
-        editMdp = (EditText)findViewById(R.id.id_mdp);
-        editAnnee = (EditText)findViewById(R.id.id_annnee);
-        btnValiderInscription = (Button)findViewById(R.id.btn_validerInscription);
-        addMembre();
 
     }
 
-    public void addMembre() {
+  /*  public void addMembre() {
         btnValiderInscription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,11 +75,12 @@ public class Inscription extends AppCompatActivity {
                 } else {
                     Toast.makeText(Inscription.this, "L'inscription a échouée, veuillez rééssayer.", Toast.LENGTH_LONG).show();
                 }}
+                myDb.close();
             }
         });
     }
 
-
+*/
 
     public void selectcgu(View view){
 
