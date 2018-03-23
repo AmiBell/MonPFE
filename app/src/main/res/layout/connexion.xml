@@ -1,5 +1,6 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
@@ -66,7 +67,8 @@
                     android:imeActionLabel="@string/connect"
                     android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
-                    android:maxLines="1" />
+                    android:maxLines="1"
+                    tools:ignore="InvalidImeActionId" />
 
             </android.support.design.widget.TextInputLayout>
             <CheckBox
@@ -94,6 +96,7 @@
                 android:layout_marginTop="16dp"
                 android:background="@color/buee"
                 android:text="@string/connect"
+                android:onClick="userLogin"
                 android:textStyle="bold" />
 
             <Button
@@ -104,6 +107,7 @@
                 android:layout_marginTop="16dp"
                 android:background="@color/bleu"
                 android:text="@string/action_subscribe_short"
+                android:onClick="userReg"
                 android:textStyle="bold" />
 
         </LinearLayout>

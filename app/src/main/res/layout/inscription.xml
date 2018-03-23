@@ -23,53 +23,49 @@
         android:id="@+id/id_nom"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/rgInscription"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="13dp"
         android:ems="10"
         android:hint="@string/nom"
-        android:inputType="textPersonName"
-        android:layout_marginLeft="30dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="27dp"
-        android:layout_below="@+id/radioGroup"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/id_prenom"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/prenom"
-        android:inputType="textPersonName"
-        android:layout_below="@+id/id_nom"
         android:layout_alignLeft="@+id/id_nom"
         android:layout_alignStart="@+id/id_nom"
-        android:layout_marginTop="18dp" />
+        android:layout_below="@+id/id_nom"
+        android:ems="10"
+        android:hint="@string/prenom"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/id_mdp"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/id_email"
+        android:layout_alignStart="@+id/id_email"
+        android:layout_below="@+id/id_email"
+        android:drawableEnd="@drawable/lock"
+        android:drawableRight="@drawable/lock"
         android:ems="10"
         android:hint="@string/mdp"
-        android:drawableRight="@drawable/lock"
-        android:drawableEnd="@drawable/lock"
-        android:inputType="textPersonName"
-        android:layout_above="@+id/id_mdpConf"
-        android:layout_alignLeft="@+id/id_email"
-        android:layout_alignStart="@+id/id_email" />
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/id_email"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/id_prenom"
+        android:layout_alignStart="@+id/id_prenom"
+        android:layout_below="@+id/id_prenom"
+        android:drawableEnd="@drawable/mail"
+        android:drawableRight="@drawable/mail"
         android:ems="10"
         android:hint="@string/prompt_email"
-        android:drawableRight="@drawable/mail"
-        android:drawableEnd="@drawable/mail"
-        android:inputType="textEmailAddress"
-        android:layout_below="@+id/id_prenom"
-        android:layout_alignLeft="@+id/id_prenom"
-        android:layout_alignStart="@+id/id_prenom" />
+        android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/id_annnee"
@@ -77,7 +73,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/annee"
-        android:inputType="date"
+        android:inputType="number"
         android:layout_marginBottom="16dp"
         android:layout_above="@+id/checkBox_cgu"
         android:layout_alignLeft="@+id/id_mdpConf"
@@ -92,6 +88,7 @@
         android:layout_alignStart="@+id/checkBox_cgu"
         android:background="@color/buee"
         android:text="@string/valider"
+        android:onClick="userReg"
         android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -100,14 +97,14 @@
         android:id="@+id/id_mdpConf"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/id_mdp"
+        android:layout_alignStart="@+id/id_mdp"
+        android:layout_below="@+id/id_mdp"
+        android:drawableEnd="@drawable/lock"
+        android:drawableRight="@drawable/lock"
         android:ems="10"
         android:hint="@string/confMDP"
-        android:drawableRight="@drawable/lock"
-        android:drawableEnd="@drawable/lock"
-        android:inputType="textPersonName"
-        android:layout_above="@+id/id_annnee"
-        android:layout_alignLeft="@+id/id_mdp"
-        android:layout_alignStart="@+id/id_mdp" />
+        android:inputType="textPersonName" />
 
     <CheckBox
         android:id="@+id/checkBox_cgu"
@@ -118,7 +115,7 @@
         android:textColor="@color/DarkBlueGray"
         android:textSize="14sp"
         android:textStyle="italic"
-        android:onClick="selectcgu"
+        android:onClick="onCheck"
         android:typeface="normal"
         android:layout_above="@+id/btn_validerInscription"
         android:layout_alignLeft="@+id/id_annnee"
@@ -128,17 +125,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:id="@+id/radioGroup"
+        android:id="@+id/rgInscription"
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/textView2"
-        android:onClick="selecttype"
+
         android:layout_alignLeft="@+id/id_nom"
         android:layout_alignStart="@+id/id_nom">
 
         <RadioButton
-            android:id="@+id/radioButton4"
+            android:id="@+id/radioFemme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/id_nom"
@@ -151,10 +148,11 @@
             android:textAlignment="center"
             android:textColor="@color/MyRose"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:onClick="rbClick"/>
 
         <RadioButton
-            android:id="@+id/radioButton3"
+            android:id="@+id/radioHomme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/radioButton4"
@@ -164,9 +162,10 @@
             android:layout_weight="1"
             android:text="@string/h"
             android:textAlignment="center"
-            android:textColor="@color/buee"
+            android:textColor="@color/colorPrimary"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:onClick="rbClick"/>
     </RadioGroup>
 
 </RelativeLayout>

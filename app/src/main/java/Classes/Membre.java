@@ -4,7 +4,7 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.Index;
-import android.arch.persistence.room.PrimaryKey;
+import android.arch.persistence.room.PrimaryKey;import android.text.Editable;
 
 
 import io.reactivex.annotations.NonNull;
@@ -48,6 +48,10 @@ public class Membre {
    // private String photo ;
     @ColumnInfo(name = "minibio")
     private String minibio ;
+
+    public Membre() {
+    }
+
     @Ignore
     public Membre(String email, String nom, String prenom, String password, int numeroTel, int anneeNaiss, String minibio, String genre) {
         this.id_membre=email;
@@ -60,8 +64,7 @@ public class Membre {
         this.genre=genre;
     }
 
-    public Membre() {
-    }
+
     @Ignore
     public Membre(String email, String nom, String prenom, String password, int anneeNaiss,String genre) {
         this.id_membre= email;
