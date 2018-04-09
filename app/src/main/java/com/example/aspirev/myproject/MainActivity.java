@@ -1,7 +1,9 @@
 package com.example.aspirev.myproject;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -24,12 +26,14 @@ import com.google.android.gms.common.GoogleApiAvailability;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
-    private static final String TAG = "MainActivity";
+    private static final String TAG1 = "MainActivity";
     private static  final int ERROR_DIALOG_REQUEST = 9001 ;
 
 
 
-
+    SharedPreferences pref;
+    final String TAG = this.getClass().getName();
+    SharedPreferences.Editor editor;
 
 
     @Override
@@ -56,7 +60,9 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
-
+        pref = getSharedPreferences("login.conf", Context.MODE_PRIVATE);
+        Log.d(TAG1, pref.getString("username",""));
+        Log.d(TAG1, pref.getString("password",""));
 
     }
 
@@ -163,6 +169,12 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(this,MyLocalisation.class);
             startActivity(intent);
 
+        }else if(id == R.id.deconnexion){
+            editor=pref.edit();
+            editor.clear();
+            editor.commit();
+            Intent intent = new Intent(MainActivity.this,Connection.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

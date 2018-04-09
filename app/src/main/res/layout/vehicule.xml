@@ -112,7 +112,7 @@
             android:textColor="@color/gris" />
 
         <EditText
-            android:id="@+id/id_couleur"
+            android:id="@+id/id_sujet"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"

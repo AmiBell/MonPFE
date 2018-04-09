@@ -2,7 +2,6 @@ package com.example.aspirev.myproject;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -11,10 +10,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import com.example.aspirev.myproject.Inscription;
 
 import Classes.BackgroundTask;
 import Classes.Membre;
@@ -31,8 +28,6 @@ import io.reactivex.schedulers.Schedulers;
 
 import static java.lang.Integer.parseInt;
 import static java.lang.Integer.valueOf;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 
 /**
@@ -44,44 +39,45 @@ public class Inscription extends AppCompatActivity {
     //Database
     private CompositeDisposable compositeDisposable;
     private MembreRepository membreRepository;
-    private EditText editemail , editnom , editprenom , editmdp , editconfirmemdp , editAnneeNaiss;
-    private RadioGroup sexe ;
+    private EditText editemail, editnom, editprenom, editmdp, editconfirmemdp, editAnneeNaiss;
+    private RadioGroup sexe;
     private RadioButton homme;
     private RadioButton femme;
-    private CheckBox cgu ;
-    private Button inscription ;
+    private CheckBox cgu;
+    private Button inscription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inscription);
         //Database
-       CovoiturageDatabase userDatabase= CovoiturageDatabase.getmInstance(this); //create database
-        membreRepository  = MembreRepository.getmInstance(MembreDataSource.getInstance(userDatabase.membreDAO()));
+        CovoiturageDatabase userDatabase = CovoiturageDatabase.getmInstance(this); //create database
+        membreRepository = MembreRepository.getmInstance(MembreDataSource.getInstance(userDatabase.membreDAO()));
 
-          editemail = (EditText)findViewById(R.id.id_email);
-          editnom = (EditText)findViewById(R.id.id_nom);
-          editprenom = (EditText)findViewById(R.id.id_prenom);
-          editmdp = (EditText)findViewById(R.id.id_mdp);
-          editAnneeNaiss = (EditText)findViewById(R.id.id_annnee);
-          editconfirmemdp = (EditText)findViewById(R.id.id_mdpConf);
-          sexe = (RadioGroup)findViewById(R.id.rgInscription);
-          inscription = (Button) findViewById(R.id.btn_validerInscription);
-          cgu  = (CheckBox)findViewById(R.id.checkBox_cgu);
-          sexe=(RadioGroup)findViewById(R.id.rgInscription);
+        editemail = (EditText) findViewById(R.id.id_email);
+        editnom = (EditText) findViewById(R.id.id_nom);
+        editprenom = (EditText) findViewById(R.id.id_prenom);
+        editmdp = (EditText) findViewById(R.id.id_mdp);
+        editAnneeNaiss = (EditText) findViewById(R.id.id_annnee);
+        editconfirmemdp = (EditText) findViewById(R.id.id_mdpConf);
+        sexe = (RadioGroup) findViewById(R.id.rgInscription);
+        inscription = (Button) findViewById(R.id.btn_validerInscription);
+        cgu = (CheckBox) findViewById(R.id.cbRemember);
+        sexe = (RadioGroup) findViewById(R.id.rgInscription);
 
 
-         // addMembre();
+        // addMembre();
 
     }
-    public String rbClick(View v){
+
+    public String rbClick(View v) {
         int radiobuttonid = sexe.getCheckedRadioButtonId();
-        RadioButton rb = (RadioButton)findViewById(radiobuttonid);
+        RadioButton rb = (RadioButton) findViewById(radiobuttonid);
         return (String) rb.getText();
     }
 
-    public boolean onCheck(View v){
-        if(cgu.isChecked())return true;
+    public boolean onCheck(View v) {
+        if (cgu.isChecked()) return true;
         Toast.makeText(Inscription.this, "Il faut accepter les contraintes générales d'utilisation.", Toast.LENGTH_SHORT).show();
         return false;
     }
@@ -167,19 +163,61 @@ public class Inscription extends AppCompatActivity {
 
     }
 
- public void userReg(View v){
-         String emailTXT = editemail.getText().toString();
-         String passTxt = editmdp.getText().toString();
-         String anneeTxt = editAnneeNaiss.getText().toString();
-         String nomTxt = editnom.getText().toString();
-         String prenomTxt = editprenom.getText().toString();
-         String radio = (String) rbClick(v);
-        String method = "register";
-        BackgroundTask backgroundTask = new BackgroundTask(this);
-        backgroundTask.execute(method,emailTXT,nomTxt,prenomTxt,anneeTxt,passTxt,radio);
-       finish();
+    public void userReg(View v) {
+        final String emailTXT = editemail.getText().toString();
+        final String passTxt = editmdp.getText().toString();
+        final String anneeTxt = editAnneeNaiss.getText().toString();
+        final String nomTxt = editnom.getText().toString();
+        final String prenomTxt = editprenom.getText().toString();
+        final String editconfirmemdpTXT = editconfirmemdp.getText().toString();
+        //  final String check = String.valueOf(sexe.getCheckedRadioButtonId());
+        final String radio = (String) rbClick(v);
+        boolean ischecked = onCheck(v);
+        if (ischecked) {
 
+            if (emailTXT.equals("") || passTxt.equals("") ||
+                    nomTxt.equals("") || prenomTxt.equals("") ||
+                    anneeTxt.equals("") || editconfirmemdpTXT.equals("") || radio.equals("")) {
+                Toast.makeText(Inscription.this, "Tous les champs sont obligatoires", Toast.LENGTH_SHORT).show();
+                return;
+            } else {
+                if (!passTxt.equals(editconfirmemdpTXT)) {
+                    Toast.makeText(Inscription.this, "Mot de passe incorrect", Toast.LENGTH_SHORT).show();
+
+                } else {
+
+                    // On déclare le pattern que l’on doit vérifier
+                    Pattern p = Pattern.compile(".+@.+\\.[a-z]+");
+                    // On déclare un matcher, qui comparera le pattern avec la
+                    // string passée en argument
+                    Matcher m = p.matcher(emailTXT);
+                    // Si l’adresse mail saisie ne correspond au format d’une
+                    // adresse mail on un affiche un message à l'utilisateur
+                    if (!m.matches()) {
+                        // Toast est une classe fournie par le SDK Android
+                        // pour afficher les messages (indications) à l'intention de
+                        // l'utilisateur. Ces messages ne possédent pas d'interaction avec l'utilisateur
+                        // Le premier argument représente le contexte, puis
+                        // le message et à la fin la durée d'affichage du Toast (constante
+                        // LENGTH_SHORT ou LENGTH_LONG). Sans oublier d'appeler la méthode
+                        //show pour afficher le Toast
+                        Toast.makeText(Inscription.this, "Adresse email invalide.",
+                                Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                }
+            }
+             {
+                String method = "register";
+                BackgroundTask backgroundTask = new BackgroundTask(this);
+                backgroundTask.execute(method,emailTXT,nomTxt,prenomTxt,anneeTxt,passTxt,radio);
+                finish();
+
+            }
+        }
     }
+
+
 
 
 /*

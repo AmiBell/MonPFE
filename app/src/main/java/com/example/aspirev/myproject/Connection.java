@@ -1,20 +1,25 @@
 package com.example.aspirev.myproject;
 
+
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.Toast;
 
-import Classes.BackgroundTask;
-import Classes.Membre;
+import android.widget.EditText;
+
+
+import com.kosalgeek.genasync12.AsyncResponse;
+import com.kosalgeek.genasync12.PostResponseAsyncTask;
+import java.util.HashMap;
+
 import Database.MembreRepository;
-import Local.CovoiturageDatabase;
-import Local.MembreDataSource;
-import io.reactivex.Flowable;
+
 import io.reactivex.disposables.CompositeDisposable;
 
 /**
@@ -26,77 +31,95 @@ public class Connection extends AppCompatActivity {
     private MembreRepository membreRepository;
       EditText email , mdp ;
       String login_email,login_pass;
+      Button btn ;
+      CheckBox cbRememeber;
+      SharedPreferences pref;
+      SharedPreferences.Editor editor;
+
+      boolean checkFlag;
+
+      final String TAG = this.getClass().getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.connexion);
-       // Button btnConnection = (Button)findViewById(R.id.email_sign_in_button) ;
-       // Button btnInscription= (Button)findViewById(R.id.email_subscribe_button);
-       // btnConnection.setOnClickListener(this);
-        //btnInscription.setOnClickListener(this);
-        email=(EditText)findViewById(R.id.email);
-        mdp=(EditText)findViewById(R.id.password);
-        //Database
-       // CovoiturageDatabase userDatabase= CovoiturageDatabase.getmInstance(this); //create database
-      //  membreRepository  = MembreRepository.getmInstance(MembreDataSource.getInstance(userDatabase.membreDAO()));
+        email=(EditText)findViewById(R.id.ETemail);
+        mdp=(EditText)findViewById(R.id.ETpassword);
+        btn =(Button)findViewById(R.id.email_sign_in_button);
+        cbRememeber=(CheckBox)findViewById(R.id.cbRemember);
 
+        Log.d(TAG,"checkFlag: " + checkFlag);
 
-    }
+        pref = getSharedPreferences("login.conf", Context.MODE_PRIVATE);
+        editor=pref.edit();
 
-  /*  public void Select(View view){
-        boolean checked = ((CheckBox)view).isChecked();
+        String username = pref.getString("username","");
+        String password = pref.getString("password","");
 
-    }
-    private boolean existe(){
-   Flowable<Membre> membre = membreRepository.getUserById(email.getText().toString());
-   if(membre==null){
-       Toast.makeText(this,"Email introuvable",Toast.LENGTH_LONG).show();
-       return false;
-   }
-   return true;
-    }*/
+        HashMap data = new HashMap();
+        data.put("email",username);
+        data.put("password",password);
 
- /*   private void goToNextActivity(){
-        boolean exist = existe();
-        if(exist)
-        {Intent intent = new Intent(this,MainActivity.class);
-        startActivity(intent);}
-        else
-            Toast.makeText(this,"Email introuvable",Toast.LENGTH_LONG).show();
+        if (!(username.equals("") && password.equals(""))){
 
-    }
+           PostResponseAsyncTask task = new PostResponseAsyncTask(Connection.this,data, new AsyncResponse() {
+                @Override
+                public void processFinish(String s) {
+                    Log.d(TAG, s);
+                    if (s.contains("success")){
+                        Intent in = new Intent(Connection.this, MainActivity.class);
+                        startActivity(in);
+                    }
+                }
+            });
 
-    private void goToNextActivity2(){
-        Intent intent = new Intent(this,Inscription.class);
-        startActivity(intent);
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.email_sign_in_button:
-                goToNextActivity();
-                break;
-            case R.id.email_subscribe_button:
-                goToNextActivity2();
-                break;
-            default:
-                break;
+            task.execute("http://192.168.1.38/PFE/login1.php");
 
         }
-    }*/
+    }
+
+    public void userLogin(final View v){
+        HashMap data = new HashMap();
+        data.put("email",email.getText().toString());
+        data.put("password",mdp.getText().toString());
+
+        final PostResponseAsyncTask task = new PostResponseAsyncTask(Connection.this,data, new AsyncResponse() {
+            @Override
+            public void processFinish(String s) {
+                Log.d(TAG, s);
+                if (s.contains("success")){
+                    if (checkFlag = remember(v)){
+                        editor.putString("email",email.getText().toString());
+                        editor.putString("password",mdp.getText().toString());
+                        editor.apply();
+                    }
+                    Intent in = new Intent(Connection.this, MainActivity.class);
+                    startActivity(in);
+                }
+            }
+        });
+
+        task.execute("http://192.168.1.38/PFE/login1.php");
+    }
+
 
     public void userReg(View v){
         Intent intent = new Intent(this,Inscription.class);
         startActivity(intent);
     }
 
+    public boolean remember(View v) {
+        if (cbRememeber.isChecked()== true) return true;
+        return false;
+    }
+    /*
     public void userLogin(View v){
         login_email=email.getText().toString();
         login_pass=mdp.getText().toString();
         String method="login";
         BackgroundTask backgroundTask= new BackgroundTask(this);
         backgroundTask.execute(method,login_email,login_pass);
-    }
+    }*/
 }

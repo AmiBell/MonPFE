@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content">
 
                 <AutoCompleteTextView
-                    android:id="@+id/email"
+                    android:id="@+id/ETemail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_email"
@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/password"
+                    android:id="@+id/ETpassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/mdp"
@@ -71,12 +71,14 @@
                     tools:ignore="InvalidImeActionId" />
 
             </android.support.design.widget.TextInputLayout>
+
             <CheckBox
-                android:id="@+id/checkBox_cgu"
+                android:id="@+id/cbRemember"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:checked="false"
+                android:onClick="remember"
                 android:text="@string/souvenir"
-                android:onClick="Select"
                 android:textColor="@android:color/black" />
 
             <TextView

@@ -21,7 +21,7 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/id_couleur"
+        android:id="@+id/id_sujet"
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:layout_alignLeft="@+id/textView3"
@@ -42,32 +42,34 @@
         android:textColor="@android:color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:layout_below="@+id/id_couleur"
-        android:layout_alignLeft="@+id/id_couleur"
-        android:layout_alignStart="@+id/id_couleur" />
+        android:layout_below="@+id/id_sujet"
+        android:layout_alignLeft="@+id/id_sujet"
+        android:layout_alignStart="@+id/id_sujet" />
 
-<EditText
-    android:layout_width="match_parent"
-    android:layout_height="200dp"
-    android:id="@+id/editText13"
-    android:background="@color/gris"
-    android:layout_marginTop="15dp"
-    android:layout_below="@+id/textView4"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentStart="true" />
+    <EditText
+        android:id="@+id/id_message"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView4"
+        android:layout_marginTop="15dp"
+        android:background="@color/gris"
+        android:inputType="textLongMessage" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnEnvoiMsg"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="@string/envoyer"
-        android:contentDescription="@string/envoyer"
-        android:background="@color/bleu"
-        android:textSize="20sp"
-        android:textStyle="bold"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:background="@color/bleu"
+        android:contentDescription="@string/envoyer"
+        android:text="@string/envoyer"
+        android:onClick="send"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>

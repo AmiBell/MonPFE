@@ -43,8 +43,9 @@ public class BackgroundTask extends AsyncTask<String,Void,String> {
 
     @Override
     protected String doInBackground(String... params) {
-        String reg_url = "http://192.168.1.39/PFE/register1.php";
-        String log_url = "http://192.168.1.39/PFE/login1.php";
+
+        String reg_url = "http://192.168.1.38/PFE/register1.php";
+        String log_url = "http://192.168.1.38/PFE/login1.php";
         String method = params[0];
         if(method.equals("register")){
 
@@ -53,7 +54,7 @@ public class BackgroundTask extends AsyncTask<String,Void,String> {
             String email=params[1];
             String anneeNaiss=params[4];
             String password=params[5];
-            String sexe=params[6];
+            String genre=params[6];
 
             try {
                 URL url = new URL(reg_url);
@@ -67,7 +68,7 @@ public class BackgroundTask extends AsyncTask<String,Void,String> {
                         URLEncoder.encode("prenom","UTF-8")+"="+URLEncoder.encode(prenom,"UTF-8")+"&"+
                         URLEncoder.encode("anneeNaiss","UTF-8")+"="+URLEncoder.encode(anneeNaiss,"UTF-8")+"&"+
                         URLEncoder.encode("password","UTF-8")+"="+URLEncoder.encode(password,"UTF-8")+"&"+
-                        URLEncoder.encode("sexe","UTF-8")+"="+URLEncoder.encode(sexe,"UTF-8");
+                        URLEncoder.encode("genre","UTF-8")+"="+URLEncoder.encode(genre,"UTF-8");
                 bufferedWriter.write(data);
                 bufferedWriter.flush();
                 bufferedWriter.close();
