@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity
     private static  final int ERROR_DIALOG_REQUEST = 9001 ;
 
 
-
     SharedPreferences pref;
     final String TAG = this.getClass().getName();
     SharedPreferences.Editor editor;

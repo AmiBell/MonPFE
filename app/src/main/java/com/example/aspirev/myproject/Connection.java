@@ -11,7 +11,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 import com.kosalgeek.genasync12.AsyncResponse;
@@ -26,13 +28,12 @@ import io.reactivex.disposables.CompositeDisposable;
  * Created by lenovo on 06/03/2018.
  */
 
-public class Connection extends AppCompatActivity {
-    private CompositeDisposable compositeDisposable;
-    private MembreRepository membreRepository;
+public class Connection extends AppCompatActivity  {
+
       EditText email , mdp ;
-      String login_email,login_pass;
       Button btn ;
       CheckBox cbRememeber;
+
       SharedPreferences pref;
       SharedPreferences.Editor editor;
 
@@ -49,6 +50,7 @@ public class Connection extends AppCompatActivity {
         mdp=(EditText)findViewById(R.id.ETpassword);
         btn =(Button)findViewById(R.id.email_sign_in_button);
         cbRememeber=(CheckBox)findViewById(R.id.cbRemember);
+
 
         Log.d(TAG,"checkFlag: " + checkFlag);
 
@@ -90,14 +92,16 @@ public class Connection extends AppCompatActivity {
             public void processFinish(String s) {
                 Log.d(TAG, s);
                 if (s.contains("success")){
-                    if (checkFlag = remember(v)){
+                    if (remember(v)){
                         editor.putString("email",email.getText().toString());
                         editor.putString("password",mdp.getText().toString());
                         editor.apply();
+                        Toast.makeText(Connection.this, "Successfully login.", Toast.LENGTH_SHORT).show();
                     }
                     Intent in = new Intent(Connection.this, MainActivity.class);
                     startActivity(in);
-                }
+                }else
+                {Toast.makeText(Connection.this, "Wrong password or email, try again.", Toast.LENGTH_SHORT).show();}
             }
         });
 
@@ -110,10 +114,20 @@ public class Connection extends AppCompatActivity {
         startActivity(intent);
     }
 
+   /* @Override
+    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+        checkFlag = b;
+        Log.d(TAG, "checkFlag:  "+ checkFlag);
+    }*/
+
+
     public boolean remember(View v) {
-        if (cbRememeber.isChecked()== true) return true;
-        return false;
+        checkFlag = cbRememeber.isChecked();
+        Log.d(TAG, "checkFlag:  "+ checkFlag);
+        return cbRememeber.isChecked();
     }
+
+
     /*
     public void userLogin(View v){
         login_email=email.getText().toString();

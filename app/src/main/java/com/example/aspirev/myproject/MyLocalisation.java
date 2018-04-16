@@ -154,15 +154,6 @@ public class MyLocalisation extends AppCompatActivity
 
 
 
-
-
-
-
-
-
-
-
-
     private void getLocationPermission(){
         String[] permissions = {Manifest.permission.ACCESS_COARSE_LOCATION,Manifest.permission.ACCESS_FINE_LOCATION};
         if(ContextCompat.checkSelfPermission(this.getApplicationContext(),Manifest.permission.ACCESS_FINE_LOCATION )==
