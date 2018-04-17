@@ -2,6 +2,7 @@ package com.example.aspirev.myproject;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -10,6 +11,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.kosalgeek.genasync12.AsyncResponse;
+import com.kosalgeek.genasync12.PostResponseAsyncTask;
+
+import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -36,15 +41,13 @@ import static java.lang.Integer.valueOf;
 
 public class Inscription extends AppCompatActivity {
 
-    //Database
-    private CompositeDisposable compositeDisposable;
     private MembreRepository membreRepository;
     private EditText editemail, editnom, editprenom, editmdp, editconfirmemdp, editAnneeNaiss;
     private RadioGroup sexe;
-    private RadioButton homme;
-    private RadioButton femme;
     private CheckBox cgu;
     private Button inscription;
+
+    final String TAG = "Inscription";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -164,7 +167,7 @@ public class Inscription extends AppCompatActivity {
     }
 
     public void userReg(View v) {
-        final String emailTXT = editemail.getText().toString();
+       final String emailTXT = editemail.getText().toString();
         final String passTxt = editmdp.getText().toString();
         final String anneeTxt = editAnneeNaiss.getText().toString();
         final String nomTxt = editnom.getText().toString();
@@ -207,14 +210,49 @@ public class Inscription extends AppCompatActivity {
                     }
                 }
             }
-             {
+             {/*
                 String method = "register";
                 BackgroundTask backgroundTask = new BackgroundTask(this);
                 backgroundTask.execute(method,emailTXT,nomTxt,prenomTxt,anneeTxt,passTxt,radio);
-                finish();
+                finish();*/
+
+                 HashMap postData= new HashMap();
+
+                 postData.put("email",editemail.getText().toString());
+                 postData.put("nom",editnom.getText().toString());
+                 postData.put("prenom",editprenom.getText().toString());
+                 postData.put("anneeNaiss",editAnneeNaiss.getText().toString());
+                 postData.put("password",editmdp.getText().toString());
+                 postData.put("genre",rbClick(v));
+
+
+                 PostResponseAsyncTask taskInsert = new PostResponseAsyncTask(Inscription.this, postData, new AsyncResponse() {
+                     @Override
+                     public void processFinish(String s) {
+                         Log.d(TAG, s);
+                         if (s.contains("success")){
+                             Toast.makeText(Inscription.this, "Inscription réussit", Toast.LENGTH_SHORT).show();
+                         }else
+                         {
+                             if (s.contains("User already existed with"))
+                             {
+                                 Toast.makeText(Inscription.this, "User already existed with this email", Toast.LENGTH_SHORT).show();
+                             }else
+                             {
+                                 if (s.contains("Unknown error occurred in registration!"))
+                                 {
+                                     Toast.makeText(Inscription.this, "Unknown error occurred in registration!", Toast.LENGTH_SHORT).show();
+                                 }
+                             }
+                         }
+                     }
+                 });
+                 taskInsert.execute("http://192.168.1.38/PFE/register1.php");
 
             }
         }
+
+
     }
 
 

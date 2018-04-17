@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -18,14 +16,25 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
+import com.amigold.fundapter.BindDictionary;
+import com.amigold.fundapter.FunDapter;
+import com.amigold.fundapter.extractors.StringExtractor;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
+import com.kosalgeek.android.json.JsonConverter;
+import com.kosalgeek.genasync12.AsyncResponse;
+import com.kosalgeek.genasync12.PostResponseAsyncTask;
+
+import java.util.ArrayList;
+
+import Classes.Offre;
+
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, AsyncResponse {
     private static final String TAG1 = "MainActivity";
     private static  final int ERROR_DIALOG_REQUEST = 9001 ;
 
@@ -34,6 +43,8 @@ public class MainActivity extends AppCompatActivity
     final String TAG = this.getClass().getName();
     SharedPreferences.Editor editor;
 
+    private ArrayList<Offres> offreList;
+    private ListView lvOffre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +73,10 @@ public class MainActivity extends AppCompatActivity
         pref = getSharedPreferences("login.conf", Context.MODE_PRIVATE);
         Log.d(TAG1, pref.getString("username",""));
         Log.d(TAG1, pref.getString("password",""));
+
+
+        PostResponseAsyncTask taskRead = new PostResponseAsyncTask(MainActivity.this, this);
+        taskRead.execute("http://192.168.1.38/PFE/showCov.php");
 
     }
 
@@ -171,7 +186,7 @@ public class MainActivity extends AppCompatActivity
         }else if(id == R.id.deconnexion){
             editor=pref.edit();
             editor.clear();
-            editor.commit();
+            editor.apply();
             Intent intent = new Intent(MainActivity.this,Connection.class);
             startActivity(intent);
         }
@@ -180,15 +195,8 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-    private  void init(){
 
-
-            }
-
-
-
-
-
+    private  void init(){}
 
     protected boolean isServiceOk(){
         Log.d(TAG,"isServiceOk:cheking google service version ");
@@ -200,21 +208,44 @@ public class MainActivity extends AppCompatActivity
         }else
         if(GoogleApiAvailability.getInstance().isUserResolvableError(available))
         {
-
-            Log.d(TAG,"isServiceOk: gan error occured but we can fix it  ");
+            Log.d(TAG,"isServiceOk: an error occured but we can fix it  ");
             Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(MainActivity.this,available,ERROR_DIALOG_REQUEST);
             dialog.show();
-
-        } else {
+        }
+        else
+        {
             Toast.makeText(this,"you can't make map request",Toast.LENGTH_SHORT).show();
-
         }
         return false  ;
     }
 
 
+    @Override
+    public void processFinish(String s) {
+        Log.d(TAG, "processFinish: "+ s);
+        offreList = new JsonConverter<Offres>().toArrayList(s, Offres.class);
 
+        //insert the data that I get from JSON
+        BindDictionary<Offres> dict = new BindDictionary<Offres>();
+        Log.d(TAG, "processFinish: BEFORE DICT1 ");
+        dict.addStringField(R.id.date, new StringExtractor<Offres>() {
+            @Override
+            public String getStringValue(Offres offres, int position) {
+                return ""+offres.dateDep;
+            }
+        });
 
-
-
+        Log.d(TAG, "processFinish: AFTER DICT1 ");
+        dict.addStringField(R.id.heure, new StringExtractor<Offres>() {
+            @Override
+            public String getStringValue(Offres offres, int position) {
+                return ""+offres.heureDep;
+            }
+        });
+        Log.d(TAG, "processFinish: AFTER DICT2 ");
+        FunDapter<Offres> adapter = new FunDapter<Offres>(MainActivity.this,offreList, R.layout.layout_list_cov, dict);
+        lvOffre = (ListView)findViewById(R.id.listCov);
+        lvOffre.setAdapter(adapter);
+        Log.d(TAG, "processFinish: AFTER lvOffre ");
+    }
 }

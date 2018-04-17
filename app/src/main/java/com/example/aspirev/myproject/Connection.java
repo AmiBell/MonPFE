@@ -16,17 +16,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
+import com.kosalgeek.android.json.JsonConverter;
 import com.kosalgeek.genasync12.AsyncResponse;
 import com.kosalgeek.genasync12.PostResponseAsyncTask;
+
 import java.util.HashMap;
 
-import Database.MembreRepository;
-
-import io.reactivex.disposables.CompositeDisposable;
-
-/**
- * Created by lenovo on 06/03/2018.
- */
 
 public class Connection extends AppCompatActivity  {
 
@@ -96,8 +91,8 @@ public class Connection extends AppCompatActivity  {
                         editor.putString("email",email.getText().toString());
                         editor.putString("password",mdp.getText().toString());
                         editor.apply();
-                        Toast.makeText(Connection.this, "Successfully login.", Toast.LENGTH_SHORT).show();
                     }
+                    Toast.makeText(Connection.this, "Successfully login.", Toast.LENGTH_SHORT).show();
                     Intent in = new Intent(Connection.this, MainActivity.class);
                     startActivity(in);
                 }else

@@ -1,171 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:focusable="true">
+    android:focusable="true"
+    android:padding="10dp">
 
-    <TextView
-        android:id="@+id/textView2"
+    <ScrollView
+        android:id="@+id/register_form"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:text="@string/action_subscribe_short"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="30sp"
-        android:textStyle="bold|italic" />
+        android:layout_height="match_parent">
 
 
-    <EditText
-        android:id="@+id/id_nom"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/rgInscription"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="13dp"
-        android:ems="10"
-        android:hint="@string/nom"
-        android:inputType="textPersonName" />
+        <RelativeLayout
 
-    <EditText
-        android:id="@+id/id_prenom"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/id_nom"
-        android:layout_alignStart="@+id/id_nom"
-        android:layout_below="@+id/id_nom"
-        android:ems="10"
-        android:hint="@string/prenom"
-        android:inputType="textPersonName" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/id_mdp"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/id_email"
-        android:layout_alignStart="@+id/id_email"
-        android:layout_below="@+id/id_email"
-        android:drawableEnd="@drawable/lock"
-        android:drawableRight="@drawable/lock"
-        android:ems="10"
-        android:hint="@string/mdp"
-        android:inputType="textPersonName" />
+            <RadioGroup
+                android:id="@+id/rgInscription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/id_nom"
+                android:layout_alignStart="@+id/id_nom"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
 
-    <EditText
-        android:id="@+id/id_email"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/id_prenom"
-        android:layout_alignStart="@+id/id_prenom"
-        android:layout_below="@+id/id_prenom"
-        android:drawableEnd="@drawable/mail"
-        android:drawableRight="@drawable/mail"
-        android:ems="10"
-        android:hint="@string/prompt_email"
-        android:inputType="textEmailAddress" />
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/id_annnee"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/annee"
-        android:inputType="number"
-        android:layout_marginBottom="16dp"
-        android:layout_above="@+id/cbRemember"
-        android:layout_alignLeft="@+id/id_mdpConf"
-        android:layout_alignStart="@+id/id_mdpConf" />
+            </RadioGroup>
 
-    <Button
-        android:id="@+id/btn_validerInscription"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/cbRemember"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/cbRemember"
-        android:background="@color/buee"
-        android:text="@string/valider"
-        android:onClick="userReg"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+            <RadioButton
+                android:id="@+id/radioHomme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="75dp"
+                android:layout_marginRight="75dp"
+                android:layout_marginTop="12dp"
+                android:text="@string/h"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/id_mdpConf"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/id_mdp"
-        android:layout_alignStart="@+id/id_mdp"
-        android:layout_below="@+id/id_mdp"
-        android:drawableEnd="@drawable/lock"
-        android:drawableRight="@drawable/lock"
-        android:ems="10"
-        android:hint="@string/confMDP"
-        android:inputType="textPersonName" />
+            <RadioButton
+                android:id="@+id/radioFemme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/radioHomme"
+                android:layout_alignBottom="@+id/radioHomme"
+                android:layout_marginLeft="44dp"
+                android:layout_marginStart="44dp"
+                android:layout_toEndOf="@+id/rgInscription"
+                android:layout_toRightOf="@+id/rgInscription"
+                android:text="@string/f"
+                android:textAlignment="center"
+                android:textColor="@color/MyRose"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-    <CheckBox
-        android:id="@+id/cbRemember"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:text="@string/cgu"
-        android:textAlignment="center"
-        android:textColor="@color/DarkBlueGray"
-        android:textSize="14sp"
-        android:textStyle="italic"
-        android:onClick="onCheck"
-        android:typeface="normal"
-        android:layout_above="@+id/btn_validerInscription"
-        android:layout_alignLeft="@+id/id_annnee"
-        android:layout_alignStart="@+id/id_annnee" />
+            <EditText
+                android:id="@+id/id_nom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/radioHomme"
+                android:ems="10"
+                android:hint="@string/nom"
+                android:inputType="textPersonName" />
 
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/rgInscription"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/textView2"
+            <EditText
+                android:id="@+id/id_prenom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/id_nom"
+                android:layout_alignStart="@+id/id_nom"
+                android:layout_below="@+id/id_nom"
+                android:layout_marginTop="15dp"
+                android:ems="10"
+                android:hint="@string/prenom"
+                android:inputType="textPersonName" />
 
-        android:layout_alignLeft="@+id/id_nom"
-        android:layout_alignStart="@+id/id_nom">
+            <EditText
+                android:id="@+id/id_mdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/id_email"
+                android:layout_marginLeft="6dp"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="16dp"
+                android:drawableEnd="@drawable/lock"
+                android:drawableRight="@drawable/lock"
+                android:ems="10"
+                android:hint="@string/mdp"
+                android:inputType="textPersonName" />
 
-        <RadioButton
-            android:id="@+id/radioFemme"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/id_nom"
-            android:layout_marginLeft="40dp"
-            android:layout_marginStart="40dp"
-            android:layout_toEndOf="@+id/radioButton3"
-            android:layout_toRightOf="@+id/radioButton3"
-            android:layout_weight="1"
-            android:text="@string/f"
-            android:textAlignment="center"
-            android:textColor="@color/MyRose"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:onClick="rbClick"/>
+            <EditText
+                android:id="@+id/id_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/id_prenom"
+                android:layout_alignStart="@+id/id_prenom"
+                android:layout_below="@+id/id_prenom"
+                android:layout_marginTop="14dp"
+                android:drawableEnd="@drawable/mail"
+                android:drawableRight="@drawable/mail"
+                android:ems="10"
+                android:hint="@string/prompt_email"
+                android:inputType="textEmailAddress" />
 
-        <RadioButton
-            android:id="@+id/radioHomme"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/radioButton4"
-            android:layout_alignBottom="@+id/radioButton4"
-            android:layout_alignLeft="@+id/id_nom"
-            android:layout_alignStart="@+id/id_nom"
-            android:layout_weight="1"
-            android:text="@string/h"
-            android:textAlignment="center"
-            android:textColor="@color/colorPrimary"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:onClick="rbClick"/>
-    </RadioGroup>
+            <EditText
+                android:id="@+id/id_annnee"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/id_mdpConf"
+                android:layout_alignStart="@+id/id_mdpConf"
+                android:layout_below="@+id/id_mdpConf"
+                android:layout_marginTop="18dp"
+                android:ems="10"
+                android:hint="@string/annee"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/id_mdpConf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/id_mdp"
+                android:layout_alignStart="@+id/id_mdp"
+                android:layout_below="@+id/id_mdp"
+                android:layout_marginTop="20dp"
+                android:drawableEnd="@drawable/lock"
+                android:drawableRight="@drawable/lock"
+                android:ems="10"
+                android:hint="@string/confMDP"
+                android:inputType="textPersonName" />
+
+            <CheckBox
+                android:id="@+id/cbRemember"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/id_annnee"
+                android:layout_marginTop="14dp"
+                android:text="@string/cgu"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:typeface="normal" />
+
+
+            <Button
+                android:id="@+id/btn_validerInscription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/cbRemember"
+                android:layout_marginTop="52dp"
+                android:background="@color/buee"
+                android:onClick="userReg"
+                android:text="@string/valider"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+
+        </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>
