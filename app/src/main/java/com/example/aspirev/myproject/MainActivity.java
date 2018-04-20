@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -28,13 +29,14 @@ import com.kosalgeek.android.json.JsonConverter;
 import com.kosalgeek.genasync12.AsyncResponse;
 import com.kosalgeek.genasync12.PostResponseAsyncTask;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-import Classes.Offre;
+
 
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, AsyncResponse {
+        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, AsyncResponse, AdapterView.OnItemClickListener{
     private static final String TAG1 = "MainActivity";
     private static  final int ERROR_DIALOG_REQUEST = 9001 ;
 
@@ -71,7 +73,7 @@ public class MainActivity extends AppCompatActivity
 
 
         pref = getSharedPreferences("login.conf", Context.MODE_PRIVATE);
-        Log.d(TAG1, pref.getString("username",""));
+        Log.d(TAG1, pref.getString("email",""));
         Log.d(TAG1, pref.getString("password",""));
 
 
@@ -222,12 +224,12 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void processFinish(String s) {
-        Log.d(TAG, "processFinish: "+ s);
+
         offreList = new JsonConverter<Offres>().toArrayList(s, Offres.class);
 
         //insert the data that I get from JSON
         BindDictionary<Offres> dict = new BindDictionary<Offres>();
-        Log.d(TAG, "processFinish: BEFORE DICT1 ");
+
         dict.addStringField(R.id.date, new StringExtractor<Offres>() {
             @Override
             public String getStringValue(Offres offres, int position) {
@@ -235,17 +237,35 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        Log.d(TAG, "processFinish: AFTER DICT1 ");
         dict.addStringField(R.id.heure, new StringExtractor<Offres>() {
             @Override
             public String getStringValue(Offres offres, int position) {
                 return ""+offres.heureDep;
             }
         });
-        Log.d(TAG, "processFinish: AFTER DICT2 ");
+
         FunDapter<Offres> adapter = new FunDapter<Offres>(MainActivity.this,offreList, R.layout.layout_list_cov, dict);
         lvOffre = (ListView)findViewById(R.id.listCov);
         lvOffre.setAdapter(adapter);
-        Log.d(TAG, "processFinish: AFTER lvOffre ");
+        Log.d(TAG, "processFinish: finishe successfuly");
+        lvOffre.setOnItemClickListener(this);
+        Log.d(TAG, "processFinish: item clicked");
+
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+        Log.d(TAG, "onItemClick: clicked");
+
+        Offres selectedOffre = offreList.get(position);
+
+        Intent in = new Intent(MainActivity.this, Detail_listCov_Activity.class);
+
+        try {
+            in.putExtra("Offres", (Serializable) selectedOffre);
+        }catch (ClassCastException e){
+            //
+        }
+        startActivity(in);
     }
 }

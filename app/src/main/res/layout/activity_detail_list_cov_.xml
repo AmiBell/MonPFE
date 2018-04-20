@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.aspirev.myproject.Detail_listCov_Activity"
+    android:padding="10dp"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="@string/pt_dep"
+        android:textColor="@android:color/black"
+        android:padding="5dp"/>
+
+    <TextView
+        android:id="@+id/txtDep"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:textSize="20sp"
+        android:textColor="@color/bleu"
+        android:textAlignment="center"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/textView31"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="@string/pt_arv"
+        android:textColor="@android:color/black"
+        android:padding="5dp"/>
+
+    <TextView
+        android:id="@+id/txtArv"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:textSize="20sp"
+        android:textColor="@color/bleu"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:padding="5dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:padding="5dp"
+        android:text="@string/date"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/txtDate"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:textSize="20sp"
+        android:textColor="@color/bleu"
+        android:textAlignment="center"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/textView34"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="@string/time"
+        android:textColor="@android:color/black"
+        android:padding="5dp"/>
+
+    <TextView
+        android:id="@+id/txtHeure"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:textSize="20sp"
+        android:textColor="@color/bleu"
+        android:textAlignment="center"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/textView36"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="@string/covoiturage_entre"
+        android:textColor="@android:color/black"
+        android:padding="5dp"
+        />
+
+    <TextView
+        android:id="@+id/txtGenreComp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:textSize="20sp"
+        android:textColor="@color/bleu"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:padding="5dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="@string/nombre_de_places_r_stantes"
+        android:textColor="@android:color/black"
+        android:padding="5dp"/>
+
+    <TextView
+        android:id="@+id/txtNbPlace"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:textSize="20sp"
+        android:textColor="@color/bleu"
+        android:textAlignment="center"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/txtPrix"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/buee"
+        android:textColor="@android:color/black"
+        android:padding="5dp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginTop="15dp"/>
+
+    <Button
+        android:id="@+id/btn_voirConducteur"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/voir_profil_du_conducteur"
+        android:background="@color/bleu"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_margin="10dp"/>
+
+    <Button
+        android:id="@+id/button10"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/r_server"
+        android:background="@color/vert"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_margin="10dp"/>
+</LinearLayout>
+    </ScrollView>
+</LinearLayout>

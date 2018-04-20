@@ -3,10 +3,10 @@ package com.example.aspirev.myproject;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.sql.Date;
-import java.sql.Time;
+import java.io.Serializable;
 
-public class Offres {
+
+public class Offres implements Serializable{
     @SerializedName("nbEscale")
     public int nbEscale;
 

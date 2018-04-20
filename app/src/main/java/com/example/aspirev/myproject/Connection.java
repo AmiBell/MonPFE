@@ -52,7 +52,7 @@ public class Connection extends AppCompatActivity  {
         pref = getSharedPreferences("login.conf", Context.MODE_PRIVATE);
         editor=pref.edit();
 
-        String username = pref.getString("username","");
+        String username = pref.getString("email","");
         String password = pref.getString("password","");
 
         HashMap data = new HashMap();

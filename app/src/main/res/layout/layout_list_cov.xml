@@ -11,15 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:clickable="false"
         android:orientation="vertical"
         android:weightSum="4">
 
-        <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="36dp"
-            android:orientation="horizontal"
             android:layout_weight="1"
+            android:orientation="horizontal"
             android:weightSum="2">
 
             <TextView
@@ -49,9 +49,9 @@
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="38dp"
+            android:layout_weight="1"
             android:orientation="horizontal"
-            android:weightSum="2"
-            android:layout_weight="1">
+            android:weightSum="2">
 
             <TextView
 
@@ -81,9 +81,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="42dp"
+            android:layout_weight="1"
             android:orientation="horizontal"
-            android:weightSum="2"
-            android:layout_weight="1">
+            android:weightSum="2">
 
             <TextView
                 android:id="@+id/date"
@@ -114,8 +114,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="3"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:weightSum="3">
 
             <ImageView
                 android:id="@+id/photoGenre"
@@ -130,8 +130,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="@color/buee"
-                android:isIndicator="false"
                 android:clickable="false"
+                android:isIndicator="true"
                 android:numStars="4" />
 
             <TextView
@@ -140,8 +140,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/buee"
-                android:textColor="@android:color/black"
-                android:textAlignment="center"/>
+                android:textAlignment="center"
+                android:textColor="@android:color/black" />
         </LinearLayout>
 
     </LinearLayout>
