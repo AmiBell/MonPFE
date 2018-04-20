@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="51dp"
+    android:padding="5dp"
     >
 
     <LinearLayout
@@ -14,10 +14,9 @@
         android:focusable="true">
 
 
-
         <EditText
             android:id="@+id/editText25"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
@@ -62,17 +61,10 @@
             android:onClick="select"
             android:paddingTop="20dp"/>
 
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="20dp" />
-
         <TextView
             android:id="@+id/textView9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/MyRose"
             android:paddingTop="20dp"
             android:text="@string/changeMDP"
             android:textAlignment="center"
@@ -121,7 +113,8 @@
             android:paddingTop="20dp"
             android:text="@string/decrivezVous"
             android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textAlignment="textStart"/>
 
         <EditText
             android:id="@+id/editText32"

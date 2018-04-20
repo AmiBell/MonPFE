@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "310036047469",
+    "firebase_url": "https://seleknicovoiturage.firebaseio.com",
+    "project_id": "seleknicovoiturage",
+    "storage_bucket": "seleknicovoiturage.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:310036047469:android:3f7f929ee9936d01",
+        "android_client_info": {
+          "package_name": "com.example.aspirev.myproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "310036047469-3gqsiadhj91f6aqdaolhspdaaahk5r2k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.aspirev.myproject",
+            "certificate_hash": "7a901f17f66f5d35d4c8be4d1880fe085727baf3"
+          }
+        },
+        {
+          "client_id": "310036047469-dk367294rkv10mbm5av9on312r1uco2l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxg3ER-BfZmaN6xAAST_9RgBbXvc9DbuQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "310036047469-dk367294rkv10mbm5av9on312r1uco2l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

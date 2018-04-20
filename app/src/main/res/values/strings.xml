@@ -104,6 +104,14 @@
     <string name="InfoVehicule">InfoVehicule</string>
     <string name="Contact">contact</string>
     <string name="title_activity_my_localisation">MyLocalisation</string>
+    <string name="proposer_un_covoiturage">Proposer un covoiturage</string>
+    <string name="chercher_un_covoiturage">Chercher un covoiturage</string>
+    <string name="le">Le</string>
+    <string name="a">à</string>
+    <string name="covoiturage_entre">Covoiturage entre</string>
+    <string name="voir_profil_du_conducteur">Voir profil du conducteur</string>
+    <string name="r_server">Réserver</string>
+    <string name="nombre_de_places_r_stantes">Nombre de places réstantes</string>
 
 
 </resources>

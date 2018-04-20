@@ -2,9 +2,6 @@ package com.example.aspirev.myproject;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -13,18 +10,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.aspirev.myproject.R;
 
 public class Vehicule extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    EditText editImmat,editMarque,editModele,editCouleur;
-    Button btnAjouterVehicule;
-    DataBaseVehicule myDb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,15 +35,6 @@ public class Vehicule extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
-        myDb= new DataBaseVehicule(this);
-        editImmat  = (EditText) findViewById(R.id.id_nom);
-        editMarque = (EditText)findViewById(R.id.id_prenom);
-        editModele = (EditText)findViewById(R.id.id_email);
-        editCouleur = (EditText)findViewById(R.id.id_mdp);
-
-        btnAjouterVehicule = (Button)findViewById(R.id.id_ajouterVoiture);
-        addVehicule();
     }
 
     @Override
@@ -137,23 +120,5 @@ public class Vehicule extends AppCompatActivity
         return true;
     }
 
-    public void addVehicule() {
-        //Button valide = (Button) findViewById(R.id.id_validpref);
-       btnAjouterVehicule.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                boolean isInserted = myDb.insertVehicule(editImmat.getText().toString(),
-                        editMarque.getText().toString(),
-                        editModele.getText().toString(),
-                        editCouleur.getText().toString());
-                if (isInserted) {
-                    Toast.makeText(Vehicule.this, "Véhicule ajouté.", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(Vehicule.this, "Veuillez réessayer.", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-}
 
 }

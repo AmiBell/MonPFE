@@ -4,27 +4,26 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="51dp"
+    android:padding="5dp"
     >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:focusable="true">
-
 
 
         <EditText
             android:id="@+id/editText5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:drawableEnd="@drawable/dep"
+            android:drawableRight="@drawable/dep"
             android:ems="10"
             android:hint="@string/pt_dep"
-            android:drawableRight="@drawable/dep"
-            android:drawableEnd="@drawable/dep"
-            android:inputType="textPersonName"
-            android:layout_marginBottom="20dp"/>
+            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/editText16"
@@ -71,10 +70,7 @@
         <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:onClick="SelectChoix"
-
-
-            >
+            android:onClick="SelectChoix">
 
             <RadioButton
                 android:id="@+id/radioButton6"
@@ -97,13 +93,17 @@
         </RadioGroup>
 
         <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
             android:id="@+id/editText33"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="160dp"
+            android:layout_marginBottom="20dp"
             android:ems="10"
             android:hint="@string/moreI"
-            android:inputType="textMultiLine"
-            android:layout_marginBottom="20dp"/>
+            android:inputType="textMultiLine" />
 
         <Button
             android:id="@+id/button"

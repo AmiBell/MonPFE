@@ -1,52 +1,86 @@
 package Classes;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.Index;
+import android.arch.persistence.room.PrimaryKey;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by AspireV on 2018-03-09.
  */
 
+@Entity(tableName = "wilaya", indices = {@Index(value = "nomW", unique = true)})
 public class Wilaya{
-        private int codeW ;
-        private String nomW ;
-        private double lattitude ;
-        private double logitude ;
 
-        public Wilaya(int codeW, String nomW, double lattitude, double logitude) {
-            this.codeW = codeW;
-            this.nomW = nomW;
-            this.lattitude = lattitude;
-            this.logitude = logitude;
-        }
-        public int getCodeW() {
-            return codeW;
-        }
+    @PrimaryKey
+    @ColumnInfo(name = "codeW")
+    private int codeW ;
 
-        public void setCodeW(int codeW) {
-            this.codeW = codeW;
-        }
+    @ColumnInfo(name = "nomW")
+    private String nomW ;
 
-        public String getNomW() {
-            return nomW;
-        }
+    @ColumnInfo
+    private double lattitude ;
 
-        public void setNomW(String nomW) {
-            this.nomW = nomW;
-        }
+    @ColumnInfo
+    private double longitude ;
 
-        public double getLattitude() {
-            return lattitude;
-        }
+    @Ignore
+    private ArrayList<Lieu> listLieux = new ArrayList<Lieu>();
 
-        public void setLattitude(double lattitude) {
-            this.lattitude = lattitude;
-        }
+    @Ignore
+    public Wilaya(int codeW, String nomW, double lattitude, double longitude) {
+        this.codeW = codeW;
+        this.nomW = nomW;
+        this.lattitude = lattitude;
+        this.longitude = longitude;
+    }
 
-        public double getLogitude() {
-            return logitude;
-        }
+    public Wilaya() {
+    }
 
-        public void setLogitude(double logitude) {
-            this.logitude = logitude;
-        }
+    public int getCodeW() {
+        return codeW;
+    }
 
+    public String getNomW() {
+        return nomW;
+    }
 
+    public double getLattitude() {
+        return lattitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public ArrayList<Lieu> getListLieux() {
+        return listLieux;
+    }
+
+    public void setCodeW(int codeW) {
+        this.codeW = codeW;
+    }
+
+    public void setNomW(String nomW) {
+        this.nomW = nomW;
+    }
+
+    public void setLattitude(double lattitude) {
+        this.lattitude = lattitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public void setListLieux(ArrayList<Lieu> listLieux) {
+        this.listLieux = listLieux;
+    }
 }

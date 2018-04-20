@@ -1,0 +1,502 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "96e98a99b4022ca7530d95fa1ad40caf",
+    "entities": [
+      {
+        "tableName": "membres",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id_membre` TEXT NOT NULL, `nom` TEXT, `prenom` TEXT, `anneeNaiss` INTEGER NOT NULL, `password` TEXT, `numeroTel` INTEGER NOT NULL, `genre` TEXT, `minibio` TEXT, PRIMARY KEY(`id_membre`))",
+        "fields": [
+          {
+            "fieldPath": "id_membre",
+            "columnName": "id_membre",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nom",
+            "columnName": "nom",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "prenom",
+            "columnName": "prenom",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "anneeNaiss",
+            "columnName": "anneeNaiss",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "password",
+            "columnName": "password",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "NumeroTel",
+            "columnName": "numeroTel",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "genre",
+            "columnName": "genre",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "minibio",
+            "columnName": "minibio",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id_membre"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "offre",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id_offre` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `id_lieuDep` INTEGER NOT NULL, `id_lieuArv` INTEGER NOT NULL, `id_escaleOffre` INTEGER NOT NULL, `heureDep` INTEGER, `DateDep` TEXT, `nbPlaceTotale` INTEGER NOT NULL, `sexeCompagnie` TEXT, FOREIGN KEY(`id_lieuDep`) REFERENCES `lieu`(`id_lieu`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`id_lieuArv`) REFERENCES `lieu`(`id_lieu`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`id_escaleOffre`) REFERENCES `escale`(`id_escale`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "id_offre",
+            "columnName": "id_offre",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id_lieuDep",
+            "columnName": "id_lieuDep",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id_lieuArv",
+            "columnName": "id_lieuArv",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id_escaleOffre",
+            "columnName": "id_escaleOffre",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "heureDep",
+            "columnName": "heureDep",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "dateDep",
+            "columnName": "DateDep",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "nbPlaceTotale",
+            "columnName": "nbPlaceTotale",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sexeCompagnie",
+            "columnName": "sexeCompagnie",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id_offre"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_offre_id_lieuDep",
+            "unique": false,
+            "columnNames": [
+              "id_lieuDep"
+            ],
+            "createSql": "CREATE  INDEX `index_offre_id_lieuDep` ON `${TABLE_NAME}` (`id_lieuDep`)"
+          },
+          {
+            "name": "index_offre_id_lieuArv",
+            "unique": false,
+            "columnNames": [
+              "id_lieuArv"
+            ],
+            "createSql": "CREATE  INDEX `index_offre_id_lieuArv` ON `${TABLE_NAME}` (`id_lieuArv`)"
+          },
+          {
+            "name": "index_offre_id_escaleOffre",
+            "unique": false,
+            "columnNames": [
+              "id_escaleOffre"
+            ],
+            "createSql": "CREATE  INDEX `index_offre_id_escaleOffre` ON `${TABLE_NAME}` (`id_escaleOffre`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "lieu",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "id_lieuDep"
+            ],
+            "referencedColumns": [
+              "id_lieu"
+            ]
+          },
+          {
+            "table": "lieu",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "id_lieuArv"
+            ],
+            "referencedColumns": [
+              "id_lieu"
+            ]
+          },
+          {
+            "table": "escale",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "id_escaleOffre"
+            ],
+            "referencedColumns": [
+              "id_escale"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "reservation",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id_reservation` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `etat` INTEGER NOT NULL, `nbPlace` INTEGER NOT NULL, `offre_reservee` INTEGER NOT NULL, FOREIGN KEY(`offre_reservee`) REFERENCES `offre`(`id_offre`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "id_reservation",
+            "columnName": "id_reservation",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "etat",
+            "columnName": "etat",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nbPlace",
+            "columnName": "nbPlace",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "offre_reservee",
+            "columnName": "offre_reservee",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id_reservation"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_reservation_offre_reservee",
+            "unique": false,
+            "columnNames": [
+              "offre_reservee"
+            ],
+            "createSql": "CREATE  INDEX `index_reservation_offre_reservee` ON `${TABLE_NAME}` (`offre_reservee`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "offre",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "offre_reservee"
+            ],
+            "referencedColumns": [
+              "id_offre"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "escale",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id_escale` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `rang` INTEGER NOT NULL, `prix` REAL NOT NULL, `id_lieuEscale` INTEGER NOT NULL, FOREIGN KEY(`id_lieuEscale`) REFERENCES `lieu`(`id_lieu`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "id_escale",
+            "columnName": "id_escale",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "rang",
+            "columnName": "rang",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "prix",
+            "columnName": "prix",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id_nomEscale",
+            "columnName": "id_lieuEscale",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id_escale"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_escale_id_lieuEscale",
+            "unique": false,
+            "columnNames": [
+              "id_lieuEscale"
+            ],
+            "createSql": "CREATE  INDEX `index_escale_id_lieuEscale` ON `${TABLE_NAME}` (`id_lieuEscale`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "lieu",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "id_lieuEscale"
+            ],
+            "referencedColumns": [
+              "id_lieu"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "lieu",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id_lieu` TEXT NOT NULL, `lattitude` REAL NOT NULL, `longitude` REAL NOT NULL, `nomLieu` TEXT, PRIMARY KEY(`id_lieu`))",
+        "fields": [
+          {
+            "fieldPath": "id_lieu",
+            "columnName": "id_lieu",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lattitude",
+            "columnName": "lattitude",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "longittude",
+            "columnName": "longitude",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nomLieu",
+            "columnName": "nomLieu",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id_lieu"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "preference",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id_preference` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `music` TEXT, `cigarette` TEXT, `discussion` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id_preference",
+            "columnName": "id_preference",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "music",
+            "columnName": "music",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cigarette",
+            "columnName": "cigarette",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "discussion",
+            "columnName": "discussion",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id_preference"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "vehicule",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`matricule` INTEGER, `modele` TEXT, `marque` TEXT, `couleur` TEXT, `proprietaire` TEXT, PRIMARY KEY(`matricule`), FOREIGN KEY(`proprietaire`) REFERENCES `membres`(`id_membre`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "matricule",
+            "columnName": "matricule",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "modele",
+            "columnName": "modele",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "marque",
+            "columnName": "marque",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "couleur",
+            "columnName": "couleur",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "proprietaire",
+            "columnName": "proprietaire",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "matricule"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_vehicule_proprietaire",
+            "unique": false,
+            "columnNames": [
+              "proprietaire"
+            ],
+            "createSql": "CREATE  INDEX `index_vehicule_proprietaire` ON `${TABLE_NAME}` (`proprietaire`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "membres",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "proprietaire"
+            ],
+            "referencedColumns": [
+              "id_membre"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "wilaya",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`codeW` INTEGER NOT NULL, `nomW` TEXT, `lattitude` REAL NOT NULL, `longitude` REAL NOT NULL, PRIMARY KEY(`codeW`))",
+        "fields": [
+          {
+            "fieldPath": "codeW",
+            "columnName": "codeW",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nomW",
+            "columnName": "nomW",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "lattitude",
+            "columnName": "lattitude",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "longitude",
+            "columnName": "longitude",
+            "affinity": "REAL",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "codeW"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_wilaya_nomW",
+            "unique": true,
+            "columnNames": [
+              "nomW"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_wilaya_nomW` ON `${TABLE_NAME}` (`nomW`)"
+          }
+        ],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"96e98a99b4022ca7530d95fa1ad40caf\")"
+    ]
+  }
+}

@@ -1,10 +1,10 @@
 package com.example.aspirev.myproject;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -15,22 +15,38 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
+import com.amigold.fundapter.BindDictionary;
+import com.amigold.fundapter.FunDapter;
+import com.amigold.fundapter.extractors.StringExtractor;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
+import com.kosalgeek.android.json.JsonConverter;
+import com.kosalgeek.genasync12.AsyncResponse;
+import com.kosalgeek.genasync12.PostResponseAsyncTask;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+
+
+
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
-    private static final String TAG = "MainActivity";
+        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, AsyncResponse, AdapterView.OnItemClickListener{
+    private static final String TAG1 = "MainActivity";
     private static  final int ERROR_DIALOG_REQUEST = 9001 ;
 
 
+    SharedPreferences pref;
+    final String TAG = this.getClass().getName();
+    SharedPreferences.Editor editor;
 
-
-
+    private ArrayList<Offres> offreList;
+    private ListView lvOffre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +72,13 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
+        pref = getSharedPreferences("login.conf", Context.MODE_PRIVATE);
+        Log.d(TAG1, pref.getString("email",""));
+        Log.d(TAG1, pref.getString("password",""));
 
+
+        PostResponseAsyncTask taskRead = new PostResponseAsyncTask(MainActivity.this, this);
+        taskRead.execute("http://192.168.1.38/PFE/showCov.php");
 
     }
 
@@ -163,21 +185,20 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(this,MyLocalisation.class);
             startActivity(intent);
 
+        }else if(id == R.id.deconnexion){
+            editor=pref.edit();
+            editor.clear();
+            editor.apply();
+            Intent intent = new Intent(MainActivity.this,Connection.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-    private  void init(){
 
-
-            }
-
-
-
-
-
+    private  void init(){}
 
     protected boolean isServiceOk(){
         Log.d(TAG,"isServiceOk:cheking google service version ");
@@ -189,21 +210,62 @@ public class MainActivity extends AppCompatActivity
         }else
         if(GoogleApiAvailability.getInstance().isUserResolvableError(available))
         {
-
-            Log.d(TAG,"isServiceOk: gan error occured but we can fix it  ");
+            Log.d(TAG,"isServiceOk: an error occured but we can fix it  ");
             Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(MainActivity.this,available,ERROR_DIALOG_REQUEST);
             dialog.show();
-
-        } else {
+        }
+        else
+        {
             Toast.makeText(this,"you can't make map request",Toast.LENGTH_SHORT).show();
-
         }
         return false  ;
     }
 
 
+    @Override
+    public void processFinish(String s) {
 
+        offreList = new JsonConverter<Offres>().toArrayList(s, Offres.class);
 
+        //insert the data that I get from JSON
+        BindDictionary<Offres> dict = new BindDictionary<Offres>();
 
+        dict.addStringField(R.id.date, new StringExtractor<Offres>() {
+            @Override
+            public String getStringValue(Offres offres, int position) {
+                return ""+offres.dateDep;
+            }
+        });
 
+        dict.addStringField(R.id.heure, new StringExtractor<Offres>() {
+            @Override
+            public String getStringValue(Offres offres, int position) {
+                return ""+offres.heureDep;
+            }
+        });
+
+        FunDapter<Offres> adapter = new FunDapter<Offres>(MainActivity.this,offreList, R.layout.layout_list_cov, dict);
+        lvOffre = (ListView)findViewById(R.id.listCov);
+        lvOffre.setAdapter(adapter);
+        Log.d(TAG, "processFinish: finishe successfuly");
+        lvOffre.setOnItemClickListener(this);
+        Log.d(TAG, "processFinish: item clicked");
+
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+        Log.d(TAG, "onItemClick: clicked");
+
+        Offres selectedOffre = offreList.get(position);
+
+        Intent in = new Intent(MainActivity.this, Detail_listCov_Activity.class);
+
+        try {
+            in.putExtra("Offres", (Serializable) selectedOffre);
+        }catch (ClassCastException e){
+            //
+        }
+        startActivity(in);
+    }
 }
